@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/ca63cc5919.js" crossorigin="anonymous"></script>
     <link rel="shortcut icon" href="../src/img/icon.png" type="image/x-icon">
     <title>Budget Planner</title>
 <link href="bundle.css" rel="stylesheet"></head>
@@ -34,7 +35,7 @@
         </div>
     </div>
 
-    <div class="bottom">
+    <div class="bottom"  id="monthly">
         <div class="add">
             <div class="add__container">
                 <select class="add__type">
@@ -48,72 +49,91 @@
             </div>
         </div>
 
-        <div class="container clearfix row">
-            <div class="income col-md-6">
-                <h2 class="income__title">Income</h2>
+        <div class="container clearfix">
+            <div class="row budget-list mx-auto">
+                <div class="income col-md-6">
+                    <h2 class="income__title text-center">Income</h2>
 
-                <div class="income__list">
+                    <div class="income__list">
 
-                    <!-- To be commented out
-                    <div class="item clearfix" id="income-0">
-                        <div class="item__description">Salary</div>
-                        <div class="right clearfix">
-                            <div class="item__value">+ 4,000.00</div>
-                            <div class="item__delete">
-                                <button class="item__delete--btn"><i class="ion-ios-close-outline">
-                                </i></button>
+                        <!-- To be commented out -->
+                        <!-- <div class="item clearfix" id="income-0">
+                            <div class="item__description">Salary</div>
+                            <div class="right clearfix">
+                                <div class="item__value">+ 4,000.00</div>
+                                <div class="item__delete">
+                                    <button class="item__delete--btn"><i class="ion-ios-close-outline">
+                                    </i></button>
+                                </div>
                             </div>
                         </div>
-                    </div>
 
-                    <div class="item clearfix" id="income-1">
-                        <div class="item__description">Sold car</div>
-                        <div class="right clearfix">
-                            <div class="item__value">+ 6,000.00</div>
-                            <div class="item__delete">
-                                <button class="item__delete--btn"><i class="ion-ios-close-outline">
-                                </i></button>
+                        <div class="item clearfix" id="income-1">
+                            <div class="item__description">Sold car</div>
+                            <div class="right clearfix">
+                                <div class="item__value">+ 6,000.00</div>
+                                <div class="item__delete">
+                                    <button class="item__delete--btn"><i class="ion-ios-close-outline">
+                                    </i></button>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- End of commenting -->
+                    </div>
+                </div>
+
+
+                <div class="expenses col-md-6">
+                    <h2 class="expenses__title text-center">Expenses</h2>
+
+                    <div class="expenses__list">
+
+                        <!-- To be commented out -->
+                        <!-- <div class="item clearfix" id="expense-0">
+                            <div class="item__description">Apartment rent</div>
+                            <div class="right clearfix">
+                                <div class="item__value">- 750.00</div>
+                                <div class="item__percentage">25%</div>
+                                <div class="item__delete">
+                                    <button class="item__delete--btn"><i class="ion-ios-close-outline">
+                                    </i></button>
+                                </div>
                             </div>
                         </div>
+
+                        <div class="item clearfix" id="expense-1">
+                            <div class="item__description">Sold car</div>
+                            <div class="right clearfix">
+                                <div class="item__value">- 450.00</div>
+                                <div class="item__percentage">40%</div>
+                                <div class="item__delete">
+                                    <button class="item__delete--btn"><i class="ion-ios-close-outline">
+                                    </i></button>
+                                </div>
+                            </div>
+                        </div> -->
+                        <!-- End of commenting -->
+
                     </div>
-                     End of commenting-->
                 </div>
             </div>
-
-
-            <div class="expenses col-md-6">
-                <h2 class="expenses__title">Expenses</h2>
-
-                <div class="expenses__list">
-
-                    <!-- To be commented out
-                    <div class="item clearfix" id="expense-0">
-                        <div class="item__description">Apartment rent</div>
-                        <div class="right clearfix">
-                            <div class="item__value">- 750.00</div>
-                            <div class="item__percentage">25%</div>
-                            <div class="item__delete">
-                                <button class="item__delete--btn"><i class="ion-ios-close-outline">
-                                </i></button>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="item clearfix" id="expense-1">
-                        <div class="item__description">Sold car</div>
-                        <div class="right clearfix">
-                            <div class="item__value">- 450.00</div>
-                            <div class="item__percentage">40%</div>
-                            <div class="item__delete">
-                                <button class="item__delete--btn"><i class="ion-ios-close-outline">
-                                </i></button>
-                            </div>
-                        </div>
-                    </div>
-                     End of commenting-->
-
-                </div>
+            <!-- buttons to go back and  forth between daily, monthly and stats pages-->
+            <!-- <div class="goto-page page-btn-previous">
+                <button class="btn page-btn"><i class="fas fa-chevron-left"></i></button>
             </div>
+            <div class="goto-page page-btn-next">
+                <button class="btn page-btn"><i class="fas fa-chevron-right"></i></button>
+            </div> -->
+
+            <!-- buttons to save and edit budgets-->
+            <!-- <div class="buttons">
+                <span>
+                    <button class="btn btn-success">Save</button>
+                </span>
+                <span>
+                    <button class="btn btn-secondary">Edit</button>
+                </span>
+            </div> -->
 
         </div>
         
