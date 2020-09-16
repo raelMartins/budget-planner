@@ -28,12 +28,6 @@ const setupEventListeners = () => {
         console.log('A page button was clicked');
     })
 };
-//Fnction to display the appropriate page
-const displayPage = id => {
-    //On start up display the monthly budget which is between the daily and stats
-
-    //check the id of the "bottom" class in the dom
-}
 
 //Function to update the budget
 const updateBudget = () => {
