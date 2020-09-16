@@ -1,5 +1,5 @@
 
-import '../bootstrap/bootstrap-4.4.1-dist/css/bootstrap.min.css';
+import '../css/bootstrap.min.css';
 import '../css/style.css';
 import * as budgetctrl from './models/Monthly';
 import * as UIctrl from './views/monthlyView';
