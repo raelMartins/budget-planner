@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
+import Bottom from './components/Bottom';
+import Top from './components/Top';
 
-const App = () => {
-    return(
-        <h1>Hello World</h1>
-    )
+class App extends Component {
+    constructor() {
+        super()
+        this.state = {}
+        
+    }
+    render() {
+        return(
+            <div>
+                <Top data={this.state}/>
+                <Bottom data={this.state}/>
+            </div>
+        )   
+    }
 }
 
 export default App;
