@@ -20,7 +20,6 @@ const MainContent = props => {
                 </div>
                 <div className="expenses col-md-6">
                     <h2 className="expenses__title text-center">Expenses</h2>
-
                     <div className="expenses__list">
                         { expenseList }
                     </div>

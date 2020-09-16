@@ -16,10 +16,29 @@ class Monthly extends Component {
             allMonthlyItems: {
                 inc: [],
                 exp: []
-            }
+            },
+            totals: {
+                inc: 0,
+                exp: 0
+            },
+            budget: 0
         }
         this.handleClick = this.handleClick.bind(this)
         this.handleChange = this.handleChange.bind(this)
+        this.calculateTotal = this.calculateTotal.bind(this)
+    }
+
+    calculateTotal() {
+        // let income = 0
+        // let expense = 0
+        // const totalInc = this.state.allMonthlyItems.inc.forEach(el => income += parseInt(el.value))
+        // const totalExp = this.state.allMonthlyItems.exp.forEach(el => expense += parseInt(el.value))
+
+        // const newBudget = totalInc - totalExp;
+
+        this.state.allMonthlyItems.inc.forEach(el => console.log(el))
+
+        //this.setState({budget: newBudget, totals: {inc: totalInc, exp: totalExp}})
     }
 
     handleClick(event) {
@@ -50,11 +69,13 @@ class Monthly extends Component {
                             type: "exp",
                             description: "",
                             value: ""
+
                         }
                     }
                 }
             })
         }
+        this.calculateTotal()
     }
     
     handleChange(event) {
