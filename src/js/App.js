@@ -11,6 +11,7 @@ class App extends Component {
     render() {
         return(
             <div>
+                {/* this is the top and bottom sections */}
                 <Top data={this.state}/>
                 <Bottom data={this.state}/>
             </div>

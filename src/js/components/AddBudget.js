@@ -4,8 +4,14 @@ const AddBudget = props => {
     return(
         <div className="add">
             <div className="add__container">
+                {/* here i created a form that will receive the state props from it's parent and the handle change function and get input from the user */}
                 <form>
-                    <select value={props.data.currentItem.type} className="add__type" name="type" onChange={props.handleChange}>
+                    <select 
+                        value={props.data.currentItem.type} 
+                        className="add__type" 
+                        name="type" 
+                        onChange={props.handleChange}
+                    >
                         <option value="inc">+</option>
                         <option value="exp">-</option>
                     </select>

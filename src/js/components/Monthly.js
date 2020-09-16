@@ -21,6 +21,7 @@ class Monthly extends Component {
         this.handleClick = this.handleClick.bind(this)
         this.handleChange = this.handleChange.bind(this)
     }
+
     handleClick(event) {
         event.preventDefault()
         const currentItem = {...this.state.currentItem}
@@ -71,7 +72,7 @@ class Monthly extends Component {
                     handleChange={this.handleChange} 
                 />
 
-                <MainContent />
+                <MainContent data={this.state.allMonthlyItems}/>
             </div>
         )
     }
