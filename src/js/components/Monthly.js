@@ -52,11 +52,10 @@ class Monthly extends Component {
                         }
                     }
                 }
-                
             })
         }
-        
     }
+    
     handleChange(event) {
         const {name, value} = event.target;
         const currentItem = {...this.state.currentItem}
