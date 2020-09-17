@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import Bottom from './components/Bottom';
-import Top from './components/Top';
+import Monthly from './components/smart/Monthly';
 
 class App extends Component {
     constructor() {
@@ -11,9 +10,7 @@ class App extends Component {
     render() {
         return(
             <div>
-                {/* this is the top and bottom sections */}
-                <Top data={this.state}/>
-                <Bottom data={this.state}/>
+                <Monthly />
             </div>
         )   
     }

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import AddBudget from './AddBudget';
-import MainContent from './MainContent';
+import Top from '../dumb/topSection/Top';
+import Bottom from '../dumb/bottomSection/Bottom';
 
 class Monthly extends Component {
     constructor() {
@@ -87,13 +87,8 @@ class Monthly extends Component {
     render() {
         return(
             <div>
-                <AddBudget
-                    data={this.state} 
-                    handleClick={this.handleClick} 
-                    handleChange={this.handleChange} 
-                />
-
-                <MainContent data={this.state.allMonthlyItems}/>
+                <Top />
+                <Bottom data={this.state} handleChange={this.handleChange} handleClick={this.handleClick}/>
             </div>
         )
     }

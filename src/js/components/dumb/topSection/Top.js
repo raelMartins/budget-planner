@@ -1,5 +1,5 @@
 import React from 'react';
-import BudgetView from './dumb/topSection/BudgetView';
+import BudgetView from './BudgetView';
 
 const Top = props => {
     return (
