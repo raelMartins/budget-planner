@@ -6,7 +6,7 @@ const BudgetContainer = props => {
     return(
         <div>
             <BudgetIncome income={props.data.totals.inc}/>
-            <BudgetExpenses expense={props.data.totals.exp}/>
+            <BudgetExpenses expense={props.data.totals.exp} percentage={props.data.percentage}/>
         </div>
     )
 }
