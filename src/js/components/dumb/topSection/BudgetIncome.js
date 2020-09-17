@@ -5,7 +5,7 @@ const BudgetIncome = props => {
         <div className="budget__income clearfix">
             <div className="budget__income--text">Income</div>
             <div className="right">
-                <div className="budget__income--value">7,500.00</div>
+                <div className="budget__income--value">{props.income.toLocaleString("en-US", { style: "currency", currency: "USD" })}</div>
                 <div className="budget__income--percentage">&nbsp;</div>
             </div>
         </div>

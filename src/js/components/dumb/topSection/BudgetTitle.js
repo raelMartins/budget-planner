@@ -3,7 +3,7 @@ import React from 'react';
 const BudgetTitle = props => {
     return(
         <div className="budget__title">
-            Available Budget in <span className="budget__title--month">%Month%</span>
+            Available Budget for <span className="budget__title--month">{props.month}</span>
         </div>
     )
 }

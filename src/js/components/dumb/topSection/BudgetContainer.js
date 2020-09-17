@@ -5,8 +5,8 @@ import BudgetIncome from './BudgetIncome';
 const BudgetContainer = props => {
     return(
         <div>
-            <BudgetIncome />
-            <BudgetExpenses />
+            <BudgetIncome income={props.data.totals.inc}/>
+            <BudgetExpenses expense={props.data.totals.exp}/>
         </div>
     )
 }

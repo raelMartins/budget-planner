@@ -6,6 +6,7 @@ class Monthly extends Component {
     constructor() {
         super()
         this.state = {
+            month: "",
             budget: 0,
             percentage: -1,
             currentItem: {
@@ -20,12 +21,19 @@ class Monthly extends Component {
             totals: {
                 inc: 0,
                 exp: 0
-            },
-            budget: 0
+            }
         }
         this.handleClick = this.handleClick.bind(this)
         this.handleChange = this.handleChange.bind(this)
-        this.calculateTotal = this.calculateTotal.bind(this)
+    }
+
+    componentDidMount() {
+        const months = ['January', 'February','March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+        const month = months[new Date().getMonth()]
+
+
+
+        this.setState({month: month})
     }
 
     handleClick(event) {
@@ -65,6 +73,9 @@ class Monthly extends Component {
             })
         }
     }
+    calculateTotal() {
+        
+    }
     
     handleChange(event) {
         const {name, value} = event.target;
@@ -75,7 +86,7 @@ class Monthly extends Component {
     render() {
         return(
             <div>
-                <Top />
+                <Top data={this.state}/>
                 <Bottom 
                     data={this.state} 
                     handleChange={this.handleChange} 

@@ -4,7 +4,7 @@ import BudgetView from './BudgetView';
 const Top = props => {
     return (
         <div className="top">
-            <BudgetView />
+            <BudgetView data={props.data}/>
         </div>
     )
 }
