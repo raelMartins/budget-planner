@@ -28,19 +28,6 @@ class Monthly extends Component {
         this.calculateTotal = this.calculateTotal.bind(this)
     }
 
-    calculateTotal() {
-        // let income = 0
-        // let expense = 0
-        // const totalInc = this.state.allMonthlyItems.inc.forEach(el => income += parseInt(el.value))
-        // const totalExp = this.state.allMonthlyItems.exp.forEach(el => expense += parseInt(el.value))
-
-        // const newBudget = totalInc - totalExp;
-
-        this.state.allMonthlyItems.inc.forEach(el => console.log(el))
-
-        //this.setState({budget: newBudget, totals: {inc: totalInc, exp: totalExp}})
-    }
-
     handleClick(event) {
         event.preventDefault()
         const currentItem = {...this.state.currentItem}
@@ -48,6 +35,7 @@ class Monthly extends Component {
         if (currentItem.description && currentItem.value) {
             this.setState(prev => {
                 if (currentItem.type === "inc") {
+                    currentItem.id = Math.random();
                     return {
                         allMonthlyItems: {
                             ...prev.allMonthlyItems,
@@ -60,6 +48,7 @@ class Monthly extends Component {
                         }
                     }
                 } else if (currentItem.type === "exp") {
+                    currentItem.id = Math.random();
                     return {
                         allMonthlyItems: {
                             ...prev.allMonthlyItems,
@@ -75,7 +64,6 @@ class Monthly extends Component {
                 }
             })
         }
-        this.calculateTotal()
     }
     
     handleChange(event) {
@@ -88,7 +76,11 @@ class Monthly extends Component {
         return(
             <div>
                 <Top />
-                <Bottom data={this.state} handleChange={this.handleChange} handleClick={this.handleClick}/>
+                <Bottom 
+                    data={this.state} 
+                    handleChange={this.handleChange} 
+                    handleClick={this.handleClick}
+                />
             </div>
         )
     }

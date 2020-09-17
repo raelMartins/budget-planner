@@ -4,7 +4,7 @@ const ListItem = props => {
     //created a list item for the UI using the information passed through props
     return(
         <div>
-            <div className="item clearfix" id="exp-%id%">
+            <div className="item clearfix" id={props.data.id}>
                 <div className="item__description">{props.data.description}</div>
                 <div className="right clearfix">
                     <div className="item__value">{props.data.value}</div>
