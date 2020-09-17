@@ -47,9 +47,8 @@ class Monthly extends Component {
     calculateTotal() {
         const incomes = this.state.allMonthlyItems.inc.reduce((acc, item) => acc += parseInt(item.value), 0)
         const expenses = this.state.allMonthlyItems.exp.reduce((acc, item) => acc += parseInt(item.value), 0)
-        const total = incomes + expenses;
 
-        const percentage = this.calculatePercentage(expenses, total)
+        const percentage = this.calculatePercentage(expenses, incomes)
 
         const budget = incomes - expenses;
         this.setState({budget: budget,percentage: percentage, totals: { inc: incomes, exp: expenses}})
