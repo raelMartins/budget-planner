@@ -25,15 +25,25 @@ class Monthly extends Component {
         }
         this.handleClick = this.handleClick.bind(this)
         this.handleChange = this.handleChange.bind(this)
+        this.handleDelete = this.handleDelete.bind(this)
     }
 
     componentDidMount() {
         const months = ['January', 'February','March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
         const month = months[new Date().getMonth()]
 
-
-
         this.setState({month: month})
+    }
+
+
+    handleDelete(id) {
+        let incomes = this.state.allMonthlyItems.inc.filter(el => el.id !== id)
+        let expenses = this.state.allMonthlyItems.exp.filter(el => el.id !== id)
+
+        this.setState({allMonthlyItems: {
+            inc: incomes,
+            exp: expenses
+        }})
     }
 
     handleClick(event) {
@@ -71,12 +81,12 @@ class Monthly extends Component {
                     }
                 }
             })
+           
         }
     }
-    calculateTotal() {
-        
-    }
     
+
+
     handleChange(event) {
         const {name, value} = event.target;
         const currentItem = {...this.state.currentItem}
@@ -91,6 +101,7 @@ class Monthly extends Component {
                     data={this.state} 
                     handleChange={this.handleChange} 
                     handleClick={this.handleClick}
+                    handleDelete={this.handleDelete}
                 />
             </div>
         )

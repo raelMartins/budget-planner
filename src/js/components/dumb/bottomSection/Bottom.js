@@ -12,7 +12,10 @@ const Bottom = props =>{
                     handleChange={props.handleChange} 
                 />
 
-                <MainContent data={props.data.allMonthlyItems}/>
+                <MainContent 
+                    data={props.data.allMonthlyItems}
+                    handleDelete={props.handleDelete}
+                />
             </div>
         ) 
 }

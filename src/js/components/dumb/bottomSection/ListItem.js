@@ -10,7 +10,7 @@ const ListItem = props => {
                     <div className="item__value">{props.data.value}</div>
                     {props.data.type === "exp" ? <div className="item__percentage">25%</div>: ""}
                     <div className="item__delete">
-                        <button className="item__delete--btn">x</button>
+                        <button className="item__delete--btn" onClick={() => props.handleDelete(props.data.id)}>x</button>
                     </div>
                 </div>
             </div>

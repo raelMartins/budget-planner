@@ -5,8 +5,8 @@ const MainContent = props => {
     // stored the allitems data from the props into this variable
     const items = props.data;
     //mapped the data to create an array of list items either expense or income
-    const incomeList = items.inc.length > 0 ? items.inc.map( el => <ListItem key={el.id} data={el}/>) : "";
-    const expenseList = items.exp.length > 0 ? items.exp.map( el => <ListItem key={el.id} data={el}/>) : "";
+    const incomeList = items.inc.length > 0 ? items.inc.map( el => <ListItem key={el.id} data={el} handleDelete={props.handleDelete}/>) : "";
+    const expenseList = items.exp.length > 0 ? items.exp.map( el => <ListItem key={el.id} data={el} handleDelete={props.handleDelete}/>) : "";
     
     return(
         // returning the data back to the Ui
