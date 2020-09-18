@@ -3,12 +3,26 @@ import React from 'react';
 const PageButtons = props => {
     return(
         <div>
+            {props.currentPage === "daily" ? "" :
             <div className="goto-page page-btn-previous">
-                <button className="btn page-btn"><i className="fas fa-chevron-left"></i></button>
-            </div>
+                <button 
+                    className="btn page-btn" 
+                    id="prev" 
+                    onClick={props.changePage}
+                >
+                    <i className="fas fa-chevron-left" id="prev"></i>
+                </button>
+            </div>}
+            {props.currentPage === "stats" ? "" :
             <div className="goto-page page-btn-next">
-                <button className="btn page-btn"><i className="fas fa-chevron-right"></i></button>
-            </div>
+                <button 
+                    className="btn page-btn" 
+                    id="next" 
+                    onClick={props.changePage} 
+                >
+                    <i className="fas fa-chevron-right" id="next"></i>
+                </button>
+            </div>}
         </div>
     )
 }

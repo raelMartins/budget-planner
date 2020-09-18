@@ -17,7 +17,7 @@ const Bottom = props =>{
                     data={props.data}
                     handleDelete={props.handleDelete}
                 />
-                <PageButtons />
+                <PageButtons changePage={props.changePage}/>
             </div>
         ) 
 }

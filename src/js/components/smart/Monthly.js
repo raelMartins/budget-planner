@@ -126,6 +126,8 @@ class Monthly extends Component {
                     handleChange={this.handleChange}
                     handleClick={this.handleClick}
                     handleDelete={this.handleDelete}
+                    changePage={this.props.changePage}
+                    currentPage={this.props.currentPage}
                 />
             </div>
         )
