@@ -3,8 +3,10 @@ import Daily from '../smart/Daily';
 import Monthly from '../smart/Monthly';
 import Statistics from '../smart/Statistics';
 
+//create the stateless show page component
 const ShowPage = props => {
     let page;
+    //check the current page and assign the appropriate component to the variable
     if (props.currentPage === "monthly") {
         page = <Monthly 
             changePage={props.changePage} 
@@ -25,6 +27,7 @@ const ShowPage = props => {
         />
     }
     return(
+        //return the assigned variable with the stored component
         <div>
             { page }
         </div>

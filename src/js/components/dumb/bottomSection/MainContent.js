@@ -1,6 +1,7 @@
 import React from 'react';
 import ListItem from './ListItem';
 
+//created a stateless MainContent component
 const MainContent = props => {
     // stored the allitems data from the props into this variable
     const items = props.data.allItems;

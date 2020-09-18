@@ -1,6 +1,7 @@
 import React from 'react';
-
+//created a stateless componenet for the AddBudget section
 const AddBudget = props => {
+    //created variables to store class names to style the inputs depending on the value of the current item
     const newClasses = props.data.currentItem.type === "exp" ? "red-focus" : "";
     const buttonRed = props.data.currentItem.type === "exp" ? "red" : "";
     return(

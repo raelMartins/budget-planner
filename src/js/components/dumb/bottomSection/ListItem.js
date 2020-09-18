@@ -1,8 +1,9 @@
 import React from 'react';
 
+//created a stateless list item component
 const ListItem = props => {
-    //created a list item for the UI using the information passed through props
     return(
+        //render the list item created using the information passed through props
         <div>
             <div className="item clearfix" id={props.data.id}>
                 <div className="item__description">{props.data.description}</div>

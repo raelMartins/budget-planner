@@ -1,7 +1,9 @@
 import React from 'react';
 
+//create a stateless component to display buttons
 const PageButtons = props => {
     return(
+        //render our buttons to the page and give them functionality to change the page thereby adding the current pages' state to the app component
         <div>
             {props.currentPage === "daily" ? "" :
             <div className="goto-page page-btn-previous">
