@@ -313,12 +313,6 @@ h2 {
     box-shadow: none;
 }
 
-.buttons {
-    position: absolute;
-    bottom: 0;
-    right: 45%;
-}
-
 .page-btn-next {
     position: absolute;
     top: 250px;
