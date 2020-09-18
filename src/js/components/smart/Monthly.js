@@ -6,7 +6,7 @@ class Monthly extends Component {
     constructor() {
         super()
         this.state = {
-            month: "",
+            period: "",
             budget: 0,
             percentage: -1,
             currentItem: {
@@ -32,8 +32,12 @@ class Monthly extends Component {
     componentDidMount() {
         const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
         const month = months[new Date().getMonth()]
+        const year = new Date().getFullYear()
 
-        this.setState({ month: month })
+        const date = `${month} ${year}`
+
+        this.setState(this.props.pageState)
+        this.setState({ period: date })
     }
 
     calculatePercentage(exp, total) {

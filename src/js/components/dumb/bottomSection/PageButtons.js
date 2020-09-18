@@ -8,7 +8,7 @@ const PageButtons = props => {
                 <button 
                     className="btn page-btn" 
                     id="prev" 
-                    onClick={props.changePage}
+                    onClick={() => props.changePage(event,props.data)}
                 >
                     <i className="fas fa-chevron-left" id="prev"></i>
                 </button>
@@ -18,7 +18,7 @@ const PageButtons = props => {
                 <button 
                     className="btn page-btn" 
                     id="next" 
-                    onClick={props.changePage} 
+                    onClick={() => props.changePage(event,props.data)} 
                 >
                     <i className="fas fa-chevron-right" id="next"></i>
                 </button>

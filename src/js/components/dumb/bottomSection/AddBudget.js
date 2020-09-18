@@ -28,6 +28,8 @@ const AddBudget = props => {
                     />
                     <input 
                         type="number" 
+                        min="1" 
+                        step="1"
                         className={`add__value ${newClasses}`}
                         name="value"
                         value={props.data.currentItem.value}

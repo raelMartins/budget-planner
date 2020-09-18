@@ -6,11 +6,23 @@ import Statistics from '../smart/Statistics';
 const ShowPage = props => {
     let page;
     if (props.currentPage === "monthly") {
-        page = <Monthly changePage={props.changePage} currentPage={props.currentPage}/>
+        page = <Monthly 
+            changePage={props.changePage} 
+            currentPage={props.currentPage}
+            pageState={props.pageState.monthly}
+        />
     } else if (props.currentPage === "daily") {
-        page = <Daily changePage={props.changePage} currentPage={props.currentPage}/>
+        page = <Daily 
+            changePage={props.changePage} 
+            currentPage={props.currentPage}
+            pageState={props.pageState.daily}
+        />
     } else if (props.currentPage === "stats") {
-        page = <Statistics changePage={props.changePage} currentPage={props.currentPage}/>
+        page = <Statistics 
+            changePage={props.changePage} 
+            currentPage={props.currentPage}
+            pageState={props.pageState.stats}
+        />
     }
     return(
         <div>

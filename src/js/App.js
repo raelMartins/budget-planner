@@ -1,24 +1,36 @@
 import React, { Component } from 'react';
 import ShowPage from './components/dumb/ShowPage';
-import Monthly from './components/smart/Monthly';
 
 class App extends Component {
     constructor() {
         super()
         this.state = {
-            currentPage: "monthly",
-            pages: ["daily", "monthly", "stats"]
+            currentPage: "daily",
+            pages: ["daily", "monthly", "stats"],
+            pageState: {
+                daily: {},
+                monthly: {},
+                stats: {}
+            }
         }
         this.changePage = this.changePage.bind(this)
+        this.getState = this.getState.bind(this)
     }
-    changePage(event) {
+    getState(obj, curpage) {
+        this.setState({pageState: {
+            ...this.state.pageState,
+            [this.state.currentPage]: obj
+        }})
+    }
+    changePage(event, state) {
+
+        this.getState(state, currentPage)
 
         const {currentPage, pages} = this.state
 
         const pageIndex = pages.indexOf(currentPage);
 
         const newPage = event.target.id === "next" ? pages[pageIndex + 1] : pages[pageIndex - 1];
-        console.log(newPage)
 
         this.setState({currentPage: newPage})
     }
@@ -28,6 +40,7 @@ class App extends Component {
                 <ShowPage 
                     currentPage={this.state.currentPage} 
                     changePage={this.changePage}
+                    pageState={this.state.pageState} 
                 />
             </div>
         )   

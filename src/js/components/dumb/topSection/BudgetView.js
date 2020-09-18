@@ -6,7 +6,7 @@ import BudgetContainer from './BudgetContainer'
 const BudgetView = props => {
     return(
         <div className="budget">
-            <BudgetTitle month={props.data.month}/>
+            <BudgetTitle period={props.data.period}/>
             <BudgetValue budget={props.data.budget}/>
             <BudgetContainer data={props.data}/>
         </div>
