@@ -1,24 +1,6 @@
 //UI CONTROLLER
 import { DOMstrings } from "./base";
 
-const formatNumber = (num, type) => {
-
-    num = Math.abs(num);
-    num = num.toFixed(2);
-
-    const numSplit = num.split('.')
-
-    let int = numSplit[0];
-
-    if (int.length > 3) {
-        int = `${int.substr(0, int.length - 3)},${int.substr(int.length - 3, 3)}`;
-    }
-
-    const dec = numSplit[1];
-
-    return `${(type === 'exp' ? '-' : '+')} ${int}.${dec}`;
-};
-
 const nodeListForEach = (list, callback) => {
     for (let i = 0; i < list.length; i++) {
         callback(list[i], i);
@@ -66,7 +48,7 @@ export const addListItem = (obj, type) => {
 
     newHtml = html.replace('%id%', obj.id);
     newHtml = newHtml.replace('%description%', obj.description);
-    newHtml = newHtml.replace('%value%', formatNumber(obj.value, type));
+    newHtml = newHtml.replace('%value%', `${obj.value >= 0? '+' : ''} ${obj.value.toLocaleString("en-US", { style: "currency", currency: "USD" })}`);
 
     //Insert the HTML into the DOM
     document.querySelector(element).insertAdjacentHTML('beforeend', newHtml);
@@ -96,9 +78,9 @@ export const displayBudget = obj => {
 
     obj.budget > 0 ? type = 'inc' : type = 'exp';
 
-    document.querySelector(DOMstrings.budgetLabel).textContent = formatNumber(obj.budget, type);
-    document.querySelector(DOMstrings.incomeLabel).textContent = formatNumber(obj.totalInc, 'inc');
-    document.querySelector(DOMstrings.expenseLabel).textContent = formatNumber(obj.totalExp, 'exp');
+    document.querySelector(DOMstrings.budgetLabel).textContent = `${obj.budget >= 0? '+' : ''} ${obj.budget.toLocaleString("en-US", { style: "currency", currency: "USD" })}`;
+    document.querySelector(DOMstrings.incomeLabel).textContent = `+ ${obj.totalInc.toLocaleString("en-US", { style: "currency", currency: "USD" })}`;
+    document.querySelector(DOMstrings.expenseLabel).textContent = `- ${obj.totalExp.toLocaleString("en-US", { style: "currency", currency: "USD" })}`;
 
     if (obj.percentage > 0) {
         document.querySelector(DOMstrings.percentageLabel).textContent = `${obj.percentage}%`;

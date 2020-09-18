@@ -1,8 +1,8 @@
 
 import '../css/bootstrap.min.css';
 import '../css/style.css';
-import * as budgetctrl from './models/Monthly';
-import * as UIctrl from './views/monthlyView';
+import * as budgetctrl from './models/BudgetCtrl';
+import * as UIctrl from './views/view';
 import { DOMstrings } from "./views/base";
 
 //set up the projects event listeners
