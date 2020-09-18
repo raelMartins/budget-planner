@@ -1,6 +1,8 @@
 import React from 'react';
 
 const AddBudget = props => {
+    const newClasses = props.data.currentItem.type === "exp" ? "red-focus" : "";
+    const buttonRed = props.data.currentItem.type === "exp" ? "red" : "";
     return(
         <div className="add">
             <div className="add__container">
@@ -8,7 +10,7 @@ const AddBudget = props => {
                 <form>
                     <select 
                         value={props.data.currentItem.type} 
-                        className="add__type" 
+                        className={`add__type ${newClasses}` } 
                         name="type" 
                         onChange={props.handleChange}
                     >
@@ -18,7 +20,7 @@ const AddBudget = props => {
 
                     <input 
                         type="text" 
-                        className="add__description"
+                        className={`add__description ${newClasses}`}
                         name="description"
                         value={props.data.currentItem.description}
                         placeholder="Add description" 
@@ -26,13 +28,13 @@ const AddBudget = props => {
                     />
                     <input 
                         type="number" 
-                        className="add__value"
+                        className={`add__value ${newClasses}`}
                         name="value"
                         value={props.data.currentItem.value}
                         placeholder="Value"
                         onChange={props.handleChange}
                     />
-                    <button className="add__btn" onClick={props.handleClick}>+</button>
+                    <button className={`add__btn ${buttonRed}`} onClick={props.handleClick}>+</button>
                 </form>
             </div>
         </div>

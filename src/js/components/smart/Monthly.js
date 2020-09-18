@@ -14,7 +14,7 @@ class Monthly extends Component {
                 description: "",
                 value: ""
             },
-            allMonthlyItems: {
+            allItems: {
                 inc: [],
                 exp: []
             },
@@ -45,8 +45,8 @@ class Monthly extends Component {
     }
 
     calculateTotal() {
-        const incomes = this.state.allMonthlyItems.inc.reduce((acc, item) => acc += parseInt(item.value), 0)
-        const expenses = this.state.allMonthlyItems.exp.reduce((acc, item) => acc += parseInt(item.value), 0)
+        const incomes = this.state.allItems.inc.reduce((acc, item) => acc += parseFloat(item.value), 0)
+        const expenses = this.state.allItems.exp.reduce((acc, item) => acc += parseFloat(item.value), 0)
 
         const percentage = this.calculatePercentage(expenses, incomes)
 
@@ -55,11 +55,11 @@ class Monthly extends Component {
     }
 
     handleDelete(id) {
-        let incomes = this.state.allMonthlyItems.inc.filter(el => el.id !== id)
-        let expenses = this.state.allMonthlyItems.exp.filter(el => el.id !== id)
+        let incomes = this.state.allItems.inc.filter(el => el.id !== id)
+        let expenses = this.state.allItems.exp.filter(el => el.id !== id)
 
         this.setState({
-            allMonthlyItems: {
+            allItems: {
                 inc: incomes,
                 exp: expenses
             }
@@ -72,7 +72,7 @@ class Monthly extends Component {
         //get the current item and set it to a variable
         const currentItem = this.state.currentItem
         //get the all items object
-        const allItems = this.state.allMonthlyItems
+        const allItems = this.state.allItems
         const incomes = [...allItems.inc, currentItem]
         const expenses = [...allItems.exp, currentItem]
 
@@ -83,7 +83,7 @@ class Monthly extends Component {
             //check to see the type of the item
             currentItem.type === "inc" ? 
              this.setState({
-                allMonthlyItems: {
+                allItems: {
                     ...allItems,
                     inc: incomes
                 },
@@ -95,7 +95,7 @@ class Monthly extends Component {
             }, this.calculateTotal)
             :
             this.setState({
-                allMonthlyItems: {
+                allItems: {
                     ...allItems,
                     exp: expenses
                 },

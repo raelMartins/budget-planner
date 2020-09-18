@@ -1,6 +1,7 @@
 import React from 'react';
 import AddBudget from './AddBudget';
 import MainContent from './MainContent'
+import PageButtons from './PageButtons';
 
 const Bottom = props =>{
 
@@ -16,6 +17,7 @@ const Bottom = props =>{
                     data={props.data}
                     handleDelete={props.handleDelete}
                 />
+                <PageButtons />
             </div>
         ) 
 }
