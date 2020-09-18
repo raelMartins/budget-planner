@@ -1,4 +1,5 @@
 import React from 'react';
+import EditAndSubmit from './EditAndSubmit';
 import ListItem from './ListItem';
 
 //created a stateless MainContent component
@@ -26,6 +27,7 @@ const MainContent = props => {
                     </div>
                 </div>
             </div>
+            <EditAndSubmit submitData={props.submitData} data={props.data}/>
         </div>
     )
 }

@@ -152,6 +152,7 @@ class Monthly extends Component {
                     handleDelete={this.handleDelete}
                     changePage={this.props.changePage}
                     currentPage={this.props.currentPage}
+                    submitData={this.props.submitData}
                 />
             </div>
         )

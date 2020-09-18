@@ -1,5 +1,6 @@
 import React from 'react';
 import AddBudget from './AddBudget';
+import EditAndSubmit from './EditAndSubmit';
 import MainContent from './MainContent'
 import PageButtons from './PageButtons';
 
@@ -17,6 +18,7 @@ const Bottom = props =>{
                 <MainContent 
                     data={props.data}
                     handleDelete={props.handleDelete}
+                    submitData={props.submitData}
                 />
                 <PageButtons 
                     data={props.data}        

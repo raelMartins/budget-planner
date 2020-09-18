@@ -12,12 +12,14 @@ const ShowPage = props => {
             changePage={props.changePage} 
             currentPage={props.currentPage}
             pageState={props.pageState.monthly}
+            submitData={props.submitData}
         />
     } else if (props.currentPage === "daily") {
         page = <Daily 
             changePage={props.changePage} 
             currentPage={props.currentPage}
             pageState={props.pageState.daily}
+            submitData={props.submitData}
         />
     } else if (props.currentPage === "stats") {
         page = <Statistics 
