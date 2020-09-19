@@ -2,8 +2,8 @@ import React from 'react';
 
 const StatsInfoValue = props => {
     return(
-        <div className="budget__value">
-            StatsInfoValue
+        <div className="stats-total-budget">
+            $50,000.00
         </div>
     )
 }

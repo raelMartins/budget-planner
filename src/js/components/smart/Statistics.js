@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import PageButtons from '../dumb/bottomSection/PageButtons';
 import StatsBottom from '../dumb/bottomSection/Stats/StatsBottom';
 import StatsTop from '../dumb/topSection/Stats/StatsTop';
 
@@ -21,7 +20,6 @@ class Statistics extends Component {
             <div>
                 <StatsTop />
                 <StatsBottom  currentPage={this.props.currentPage} changePage={this.props.changePage}/>
-                <PageButtons currentPage={this.props.currentPage} changePage={this.props.changePage}/>
             </div>
         )
     }

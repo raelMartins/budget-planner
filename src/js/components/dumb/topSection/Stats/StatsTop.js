@@ -1,11 +1,14 @@
 import React from 'react';
-import StatsInfoView from './StatsInfoView';
+import StatsInfoContainer from './StatsInfoContainer';
+import StatsInfoTitle from './StatsInfoTitle';
+import StatsInfoValue from './StatsInfoValue';
 
 const StatsTop = props => {
     return(
-        <div className="top">
-            StatsTop
-            <StatsInfoView />
+        <div className="stats-top">
+            <StatsInfoTitle />
+            <StatsInfoValue />
+            <StatsInfoContainer />
         </div>
     )
 }

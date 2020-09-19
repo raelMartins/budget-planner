@@ -5,7 +5,6 @@ import StatsIncome from './StatsIncome';
 const StatsInfoContainer = props => {
     return(
         <div>
-            StatsInfoContainer
             <StatsIncome />
             <StatsExpense />
         </div>

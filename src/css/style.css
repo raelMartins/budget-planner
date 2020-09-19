@@ -384,7 +384,7 @@ h2 {
     background-size: cover;
     background-position: center;
     width: 100vw;
-    height: 45%;
+    height: 45vh;
 }
 .stats-year {
     color: white;font-size: 24px;
@@ -416,11 +416,15 @@ h2 {
 }
 
 /** Bottom **/
+.stats-bottom {
+    position: relative;
+    /* background-color: rgba(201, 195, 195, 0.884); */
+    padding-bottom: 30px;
+}
 .stats-container {
-    margin-top: 10px;
     border-radius: 0px;
     padding-top: 15px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+    min-height: 370px;
 }
 
 .stats-title {
@@ -444,6 +448,9 @@ h2 {
     padding-left: 5px;
     border-radius: 0;
     border-bottom: 1px solid teal;
+}
+.accordion.active {
+    background-color: rgb(233, 233, 233);
 }
 .accordion:focus {
     box-shadow: none;
