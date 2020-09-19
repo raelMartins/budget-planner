@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import PageButtons from '../dumb/bottomSection/PageButtons';
+import StatsBottom from '../dumb/bottomSection/Stats/StatsBottom';
+import StatsTop from '../dumb/topSection/Stats/StatsTop';
 
 //create the statistics class component
 class Statistics extends Component {
@@ -8,11 +10,17 @@ class Statistics extends Component {
         //initialize state
         this.state = {}
     }
+    componentDidMount() {
+        const year = new Date().getFullYear()
+        this.setState(this.props.pageState)
+        this.setState({period: year})
+    }
     render() {
         return(
             //render stats content to the DOM
             <div>
-                This is the statistics page
+                <StatsTop />
+                <StatsBottom  currentPage={this.props.currentPage} changePage={this.props.changePage}/>
                 <PageButtons currentPage={this.props.currentPage} changePage={this.props.changePage}/>
             </div>
         )

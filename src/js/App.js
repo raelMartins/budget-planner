@@ -6,7 +6,7 @@ class App extends Component {
         super()
         //initialize state
         this.state = {
-            currentPage: "daily",
+            currentPage: "stats",
             pages: ["daily", "monthly", "stats"],
             pageState: {
                 daily: {period: "",budget: 0,percentage: -1,currentItem: {type: "inc",description: "",value: ""},allItems: {inc: [],exp: []},totals: {inc: 0,exp: 0}},
