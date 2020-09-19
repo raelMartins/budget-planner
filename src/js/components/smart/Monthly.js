@@ -36,9 +36,19 @@ class Monthly extends Component {
     }
     editBudget() {
         console.log("edit button working")
+        this.setState({completed: false})
     }
     completeBudget() {
         console.log('complete button working')
+        const itemType = this.state.budget < 0 ? "exp" : "inc";
+        const newItem = {
+            id: Math.random(),
+            description: this.state.period.toUpperCase(),
+            value: this.state.budget,
+            type: itemType
+        }
+        this.props.submitData(newItem)
+        this.setState({completed: true})
     }
 
     //check if the component is mounted/rendered on the DOM then gets the state from the App component and the Date and render to the DOM
@@ -161,8 +171,8 @@ class Monthly extends Component {
                     handleDelete={this.handleDelete}
                     changePage={this.props.changePage}
                     currentPage={this.props.currentPage}
-                    submitData={this.props.submitData}
-                />
+                    completeBudget={this.completeBudget}
+                    editBudget={this.editBudget}                />
             </div>
         )
     }
