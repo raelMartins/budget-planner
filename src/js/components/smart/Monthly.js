@@ -23,13 +23,22 @@ class Monthly extends Component {
             totals: {
                 inc: 0,
                 exp: 0
-            }
+            },
+            completed: false
         }
         //bind the methods' lexical this' to the component(at least until i can figure out how to do it with my arrow functions)
         this.handleClick = this.handleClick.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.handleDelete = this.handleDelete.bind(this)
         this.calculateTotal = this.calculateTotal.bind(this)
+        this.editBudget = this.editBudget.bind(this)
+        this.completeBudget =this.completeBudget.bind(this)
+    }
+    editBudget() {
+        console.log("edit button working")
+    }
+    completeBudget() {
+        console.log('complete button working')
     }
 
     //check if the component is mounted/rendered on the DOM then gets the state from the App component and the Date and render to the DOM

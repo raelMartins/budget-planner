@@ -18,7 +18,8 @@ const Bottom = props =>{
                 <MainContent 
                     data={props.data}
                     handleDelete={props.handleDelete}
-                    submitData={props.submitData}
+                    completeBudget={props.completeBudget}
+                    editBudget={props.editBudget}
                 />
                 <PageButtons 
                     data={props.data}        

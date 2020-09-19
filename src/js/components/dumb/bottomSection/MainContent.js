@@ -27,7 +27,11 @@ const MainContent = props => {
                     </div>
                 </div>
             </div>
-            <EditAndSubmit submitData={props.submitData} data={props.data}/>
+            <EditAndSubmit 
+                data={props.data}
+                completeBudget={props.completeBudget} 
+                editBudget={props.editBudget}
+            />
         </div>
     )
 }

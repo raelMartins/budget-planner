@@ -23,13 +23,32 @@ class Daily extends Component {
             totals: {
                 inc: 0,
                 exp: 0
-            }
+            },
+            completed: false
         }
         //bind the methods to create a lexical this that points to the component(until i can enable it with arrow functions)
         this.handleClick = this.handleClick.bind(this)
         this.handleChange = this.handleChange.bind(this)
         this.handleDelete = this.handleDelete.bind(this)
         this.calculateTotal = this.calculateTotal.bind(this)
+        this.editBudget = this.editBudget.bind(this)
+        this.completeBudget =this.completeBudget.bind(this)
+    }
+    editBudget() {
+        console.log("edit button working")
+        this.setState({completed: false})
+    }
+    completeBudget() {
+        console.log('complete button working')
+        const itemType = this.state.budget < 0 ? "exp" : "inc";
+        const newItem = {
+            id: Math.random(),
+            description: this.state.period.toUpperCase(),
+            value: this.state.budget,
+            type: itemType
+        }
+        this.props.submitData(newItem)
+        this.setState({completed: true})
     }
     //Once the component has been rendered to the page, it displays the period (day/month), while also retrieving the state from the App component and setting it as the new state
     componentDidMount() {
@@ -154,7 +173,8 @@ class Daily extends Component {
                     handleDelete={this.handleDelete}
                     changePage={this.props.changePage}
                     currentPage={this.props.currentPage}
-                    submitData={this.props.submitData}
+                    completeBudget={this.completeBudget}
+                    editBudget={this.editBudget}
                 />
             </div>
         )

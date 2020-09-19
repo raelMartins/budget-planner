@@ -20,14 +20,11 @@ class App extends Component {
         this.submitData = this.submitData.bind(this)
     }
     //this method ,on clicking the submit button, adds the total budget of the page i'm on, to the state of the next page
-    submitData(totalBudget) {
+    submitData(newItem) {
+        console.log(newItem)
         //destructuring to get the current page and the pages array
         const {currentPage, pageState, pages} = this.state;
 
-        //create an array of days to determine what day the  item was submitted to give an understandable description
-        const days = [ 'SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY']
-        const date = new Date().getDate()
-        const itemDescription = `${days[new Date().getDay()]} THE ${date}TH`
 
         //create a variable that contains the new page where the new item data goes
         const pageIndex = pages.indexOf(currentPage);
@@ -36,16 +33,6 @@ class App extends Component {
         //create a variable to represent the object containing the income and expenses objects
         const allItems = pageState[newPage].allItems;
         
-        //determine values for the new item
-        const itemId = Math.random()
-        const itemType = totalBudget.budget < 0 ? "exp" : "inc"
-        //create the new item with the given values
-        const newItem = {
-            id:itemId,
-            type: itemType,
-            description: itemDescription,
-            value: Math.abs(totalBudget.budget)
-        };
 
         //create two new arrays based on the previous income and expenses array except these arrays are used to check if a submission has been input for that day already,
         //delete it, then give it a new value
@@ -53,7 +40,7 @@ class App extends Component {
         const newExpArr = allItems.exp.filter(el => el.description !== newItem.description)
 
         //check to see if the budget was an income or an expense
-        if (totalBudget.budget < 0) {
+        if (newItem.value < 0) {
             //set the state of the new page
             this.setState({pageState: {
                 ...pageState,
@@ -62,15 +49,12 @@ class App extends Component {
                     allItems: {
                         inc: newIncArr,
                         exp: [...newExpArr, newItem]
-                    },
-                    budget: pageState[newPage].budget - Math.abs(totalBudget.budget)
+                    }
                 }
             }})
-        }else if(totalBudget.budget === 0){
+        }else if(newItem.value === 0){
             alert("There is no value to be added")
         }else {
-            console.log(`${totalBudget.budget} is an income`)
-            console.log(newItem)
             this.setState({pageState: {
                 ...pageState,
                 [newPage]: {
@@ -79,8 +63,7 @@ class App extends Component {
                         ...allItems,
                         inc: [...newIncArr, newItem],
                         exp: newExpArr
-                    },
-                    budget: pageState[newPage].budget + Math.abs(totalBudget.budget)
+                    }
                 }
             }})
         }
