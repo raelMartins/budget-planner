@@ -31,7 +31,7 @@ body {
 ***************************/
 
 .top {
-    height: 40vh;
+    height: 45vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('../img/got.jpg');
     background-size: cover;
     background-position: center;
@@ -373,4 +373,129 @@ h2 {
     box-shadow: none;
     outline: none;
     border: none;
+}
+
+/******* STATS PAGE *****/
+
+/** Top **/
+.stats-top{
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('../img/got.jpg');
+    background-size: cover;
+    background-position: center;
+    width: 100vw;
+    height: 45%;
+}
+.stats-year {
+    color: white;font-size: 24px;
+    padding: 20px;
+    text-align: center;
+}
+
+.stats-total-budget {
+    color: white;
+    font-size: 40px;
+    text-align: center;
+}
+
+.stats-total-incomes {
+    color: rgb(42, 184, 184);
+    position: absolute;
+    font-size: 20px;
+    top: 65%;
+    right: 50px;
+
+}
+.stats-total-expenses {
+    color: rgb(184, 42, 42);
+    position: absolute;
+    font-size: 20px;
+    top: 80%;
+    right: 50px;
+
+}
+
+/** Bottom **/
+.stats-container {
+    margin-top: 10px;
+    border-radius: 0px;
+    padding-top: 15px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+}
+
+.stats-title {
+    font-size: 16px;
+    color: teal;
+    padding: 0 5px;
+    padding-bottom: 5px;
+    border-bottom: 3px solid teal;
+    margin-bottom: 10px;
+}
+
+.list-item {
+    position: relative;
+    margin-top: 5px;
+}
+.accordion {
+    position: relative;
+    width: 100%;
+    text-align: left;
+    padding: 14px;
+    padding-left: 5px;
+    border-radius: 0;
+    border-bottom: 1px solid teal;
+}
+.accordion:focus {
+    box-shadow: none;
+}
+
+.accordion:hover, .accordion:active, .accordion:focus {
+    background-color: rgb(233, 233, 233);
+}
+.monthly-income, .monthly-expense, .monthly-total {
+    float: right;
+    padding: 4px;
+    margin: 4;
+    font-size: 14px;
+}
+.monthly-total {
+    font-size: 16px;
+    margin-right: 15px;
+}
+.monthly-description {
+    position: relative;
+    top: 2px;
+}
+.monthly-income {color: teal}
+.monthly-expense {color: red}
+
+.monthly-budget-information {
+    position: relative;
+    margin: auto;
+    padding:0px;
+    font-size: 13px;
+    background-color: rgb(233, 233, 233);
+    overflow: hidden;
+    border-bottom: 0.5px solid rgb(228, 225, 225);
+}
+.info-description{
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.info-income, .info-expense {
+    float: right;
+    padding: 10px;
+}
+.info-income {color: teal}
+.info-expense {color: red}
+
+.item-info-container {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+}
+
+.item-info-container.active {
+    max-height: 100%;
 }
