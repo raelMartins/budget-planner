@@ -1,7 +1,9 @@
 import React from 'react'
 
+//create a budget expenses stateless component
 const BudgetExpenses = props => {
     return(
+        //render a section to display the expenses in dollars
         <div className="budget__expenses clearfix">
             <div className="budget__expenses--text">Expenses</div>
             <div className="right clearfix">

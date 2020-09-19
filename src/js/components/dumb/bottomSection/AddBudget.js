@@ -1,6 +1,9 @@
 import React from 'react';
-
+//created a stateless componenet for the AddBudget section
 const AddBudget = props => {
+    //created variables to store class names to style the inputs depending on the value of the current item
+    const newClasses = props.data.currentItem.type === "exp" ? "red-focus" : "";
+    const buttonRed = props.data.currentItem.type === "exp" ? "red" : "";
     return(
         <div className="add">
             <div className="add__container">
@@ -8,9 +11,9 @@ const AddBudget = props => {
                 <form>
                     <select 
                         value={props.data.currentItem.type} 
-                        className="add__type" 
+                        className={`add__type ${newClasses}` } 
                         name="type" 
-                        onChange={props.handleChange}
+                        onChange={props.data.completed === true ? (event) => {event.preventDefault(); alert("Data already submitted")}: props.handleChange}
                     >
                         <option value="inc">+</option>
                         <option value="exp">-</option>
@@ -18,21 +21,26 @@ const AddBudget = props => {
 
                     <input 
                         type="text" 
-                        className="add__description"
+                        className={`add__description ${newClasses}`}
                         name="description"
                         value={props.data.currentItem.description}
                         placeholder="Add description" 
-                        onChange={props.handleChange}
+                        onChange={props.data.completed === true ? (event) => {event.preventDefault(); alert("Data already submitted")}: props.handleChange}
                     />
                     <input 
                         type="number" 
-                        className="add__value"
+                        min="1" 
+                        step="1"
+                        className={`add__value ${newClasses}`}
                         name="value"
                         value={props.data.currentItem.value}
                         placeholder="Value"
-                        onChange={props.handleChange}
+                        onChange={props.data.completed === true ? (event) => {event.preventDefault(); alert("Data already submitted")}: props.handleChange}
                     />
-                    <button className="add__btn" onClick={props.handleClick}>+</button>
+                    <button 
+                        className={`add__btn ${buttonRed}`} 
+                        onClick={props.data.completed === true ? (event) => {event.preventDefault(); alert("Data already submitted")}: props.handleClick}
+                    >+</button>
                 </form>
             </div>
         </div>

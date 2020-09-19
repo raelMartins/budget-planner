@@ -15,7 +15,6 @@
 }
 
 body {
-    color: #555;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 16px;
     position: relative;
@@ -111,7 +110,11 @@ body {
 /**********************************************
 *** BOTTOM PART
 **********************************************/
-.bottom {position: relative;}
+.bottom {
+    position: relative;
+    background-color: rgba(201, 195, 195, 0.884);
+    padding-bottom: 30px;
+}
 
 /***** FORM *****/
 .add {
@@ -189,19 +192,29 @@ body {
 
 /***** LISTS *****/
 .container {
-    width: 100%;
-    margin: 60px auto;
+    position: relative;
+    width: 84%;
+    margin: 40px auto;
+    padding-top: 30px;
+    padding-bottom: 55px;
+    background-color: whitesmoke;
+    min-height: 270px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
 }
 
 .income {
     float: left;
     width: 475px;
-    margin-bottom: 100px;
+    /* padding-bottom: 100px; */
+    min-height: 140px;
 }
 
 .expenses {
     float: left;
     width: 475px;
+    min-height: 140px;
+    margin-bottom: 10px;
 }
 
 h2 {
@@ -290,13 +303,15 @@ h2 {
 
 /********** BUTTONS **************/
 
+/*Next and previous buttons*/
+
 .page-btn {
     border: none;
     outline: none;
     padding: 12px;
     width: 50px;
     height: 50px;
-    background-color: #a2aaaa34;
+    background-color: rgba(245, 245, 245, 0.404);
     text-align: center;
     border-radius: 50%;
     position: relative;
@@ -304,19 +319,13 @@ h2 {
 }
 
 .page-btn:hover {
-    background-color: #a2aaaac0;
+    background-color: whitesmoke;
     transform: translateY(-5px);
 
 }
 .page-btn:focus {
     outline: none;
     box-shadow: none;
-}
-
-.buttons {
-    position: absolute;
-    bottom: 0;
-    right: 45%;
 }
 
 .page-btn-next {
@@ -336,4 +345,32 @@ h2 {
 .budget-list {
     max-width: 95%;
     
+}
+/*Edit and submit buttons*/
+
+.edit_and_submit {
+    position: absolute;
+    bottom: 12px;
+    right: 20px;
+}
+
+.edit { color: rgb(240, 47, 47); border: none; }
+.submit { color: teal; border: none;}
+
+.edit:hover, .edit:active {
+    color: rgb(138, 28, 28);
+    box-shadow: none;
+    outline: none;
+    border: none;
+}
+.submit:hover, .submit:active {
+    color: rgb(3, 68, 68);
+    box-shadow: none;
+    outline: none;
+}
+
+.edit:focus, .submit:focus {
+    box-shadow: none;
+    outline: none;
+    border: none;
 }
