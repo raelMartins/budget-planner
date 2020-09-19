@@ -5,8 +5,8 @@ import StatsIncome from './StatsIncome';
 const StatsInfoContainer = props => {
     return(
         <div>
-            <StatsIncome />
-            <StatsExpense />
+            <StatsIncome value={props.totals.inc}/>
+            <StatsExpense value={props.totals.exp}/>
         </div>
     )
 }

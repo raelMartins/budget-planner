@@ -3,7 +3,7 @@ import React from 'react'
 const StatsExpense = props => {
     return(
         <div className="stats-total-expenses">
-            Expenses: $20,000.00
+            Expenses: {props.value.toLocaleString("en-US", { style: "currency", currency: "USD" })}
         </div>
     )
 }

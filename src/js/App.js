@@ -11,7 +11,7 @@ class App extends Component {
             pageState: {
                 daily: {period: "",budget: 0,percentage: -1,currentItem: {type: "inc",description: "",value: ""},allItems: {inc: [],exp: []},totals: {inc: 0,exp: 0}},
                 monthly:{period: "",budget: 0,percentage: -1,currentItem: {type: "inc",description: "",value: ""},allItems: {inc: [],exp: []},totals: {inc: 0,exp: 0}},
-                stats: {period: "",budget: 0,percentage: -1,currentItem: {type: "inc",description: "",value: ""},allItems: {inc: [],exp: []},totals: {inc: 0,exp: 0}}
+                stats: {period: "",budget: 0,allItems: {inc: [],exp: []},totals: {inc: 0,exp: 0}}
             }
         }
         //binding the lexical this to the component (at least till i understand how to make my arrow functions work)
@@ -31,6 +31,7 @@ class App extends Component {
 
         //create a variable to represent the object containing the income and expenses objects
         const allItems = pageState[newPage].allItems;
+        console.log(allItems)
         
 
         //create two new arrays based on the previous income and expenses array except these arrays are used to check if a submission has been input for that day already,

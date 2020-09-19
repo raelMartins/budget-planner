@@ -7,10 +7,22 @@ class Statistics extends Component {
     constructor() {
         super()
         //initialize state
-        this.state = {}
+        this.state = { 
+            period: "",
+            budget: 0,
+            allItems: {
+                inc: [],
+                exp: []
+            },
+            totals: {
+                inc: 0,
+                exp: 0
+            }
+        }
     }
     componentDidMount() {
         const year = new Date().getFullYear()
+        console.log(this.state)
         this.setState(this.props.pageState)
         this.setState({period: year})
     }
@@ -18,8 +30,16 @@ class Statistics extends Component {
         return(
             //render stats content to the DOM
             <div>
-                <StatsTop />
-                <StatsBottom  currentPage={this.props.currentPage} changePage={this.props.changePage}/>
+                <StatsTop 
+                    year={this.state.period} 
+                    budget={this.state.budget}
+                    totals={this.state.totals}
+                />
+                <StatsBottom
+                    data={this.state}  
+                    currentPage={this.props.currentPage} 
+                    changePage={this.props.changePage}
+                />
             </div>
         )
     }

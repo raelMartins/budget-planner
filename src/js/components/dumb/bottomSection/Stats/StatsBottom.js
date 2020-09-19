@@ -6,7 +6,11 @@ const StatsBottom = props => {
     return(
         <div className="stats-bottom">
             <StatsMainContent />
-            <PageButtons  currentPage={props.currentPage} changePage={props.changePage}/>
+            <PageButtons  
+                data={props.data} 
+                currentPage={props.currentPage} 
+                changePage={props.changePage}
+            />
         </div>
     )
 }

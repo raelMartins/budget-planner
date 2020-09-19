@@ -6,9 +6,9 @@ import StatsInfoValue from './StatsInfoValue';
 const StatsTop = props => {
     return(
         <div className="stats-top">
-            <StatsInfoTitle />
-            <StatsInfoValue />
-            <StatsInfoContainer />
+            <StatsInfoTitle year={props.year}/>
+            <StatsInfoValue budget={props.budget}/>
+            <StatsInfoContainer totals={props.totals}/>
         </div>
     )
 }
