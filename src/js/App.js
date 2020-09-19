@@ -21,7 +21,6 @@ class App extends Component {
     }
     //this method ,on clicking the submit button, adds the total budget of the page i'm on, to the state of the next page
     submitData(newItem) {
-        console.log(newItem)
         //destructuring to get the current page and the pages array
         const {currentPage, pageState, pages} = this.state;
 
@@ -49,7 +48,12 @@ class App extends Component {
                     allItems: {
                         inc: newIncArr,
                         exp: [...newExpArr, newItem]
-                    }
+                    },
+                    totals: {
+                        ...pageState[newPage].totals,
+                        exp: pageState[newPage].totals.exp + newItem.value
+                    },
+                    budget: pageState[newPage]. budget - newItem.value
                 }
             }})
         }else if(newItem.value === 0){
@@ -63,7 +67,12 @@ class App extends Component {
                         ...allItems,
                         inc: [...newIncArr, newItem],
                         exp: newExpArr
-                    }
+                    },
+                    totals: {
+                        ...pageState[newPage].totals,
+                        inc: pageState[newPage].totals.inc + newItem.value
+                    },
+                    budget: pageState[newPage].budget + newItem.value
                 }
             }})
         }

@@ -35,11 +35,9 @@ class Monthly extends Component {
         this.completeBudget =this.completeBudget.bind(this)
     }
     editBudget() {
-        console.log("edit button working")
         this.setState({completed: false})
     }
     completeBudget() {
-        console.log('complete button working')
         const itemType = this.state.budget < 0 ? "exp" : "inc";
         const newItem = {
             id: Math.random(),
@@ -47,8 +45,11 @@ class Monthly extends Component {
             value: this.state.budget,
             type: itemType
         }
-        this.props.submitData(newItem)
-        this.setState({completed: true})
+        //check to see that there is a budget beore adding to next page
+        if(newItem.value > 0){
+            this.props.submitData(newItem)
+            this.setState({completed: true})
+        }
     }
 
     //check if the component is mounted/rendered on the DOM then gets the state from the App component and the Date and render to the DOM
@@ -61,8 +62,10 @@ class Monthly extends Component {
         //create a more understandable version of the Date
         const date = `${month} ${year}`
 
-        //set the state using the state gotten from the app component then set the date so it can be rendered on the DOM
-        this.setState(this.props.pageState)
+        //set the state using the state gotten from the app component 
+        this.setState(this.props.pageState, this.calculateTotal())
+        
+        //then set the date so it can be rendered on the DOM
         this.setState({ period: date })
     }
 

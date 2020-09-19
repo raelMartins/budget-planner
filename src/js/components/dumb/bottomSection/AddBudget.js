@@ -13,7 +13,7 @@ const AddBudget = props => {
                         value={props.data.currentItem.type} 
                         className={`add__type ${newClasses}` } 
                         name="type" 
-                        onChange={props.handleChange}
+                        onChange={props.data.completed === true ? (event) => {event.preventDefault(); alert("Data already submitted")}: props.handleChange}
                     >
                         <option value="inc">+</option>
                         <option value="exp">-</option>
@@ -25,7 +25,7 @@ const AddBudget = props => {
                         name="description"
                         value={props.data.currentItem.description}
                         placeholder="Add description" 
-                        onChange={props.data.completed === true ? (event) => {event.preventDefault(); console.log("Data already submitted")}: props.handleChange}
+                        onChange={props.data.completed === true ? (event) => {event.preventDefault(); alert("Data already submitted")}: props.handleChange}
                     />
                     <input 
                         type="number" 
@@ -35,11 +35,11 @@ const AddBudget = props => {
                         name="value"
                         value={props.data.currentItem.value}
                         placeholder="Value"
-                        onChange={props.data.completed === true ? (event) => {event.preventDefault(); console.log("Data already submitted")}: props.handleChange}
+                        onChange={props.data.completed === true ? (event) => {event.preventDefault(); alert("Data already submitted")}: props.handleChange}
                     />
                     <button 
                         className={`add__btn ${buttonRed}`} 
-                        onClick={props.data.completed === true ? (event) => {event.preventDefault(); console.log("Data already submitted")}: props.handleClick}
+                        onClick={props.data.completed === true ? (event) => {event.preventDefault(); alert("Data already submitted")}: props.handleClick}
                     >+</button>
                 </form>
             </div>

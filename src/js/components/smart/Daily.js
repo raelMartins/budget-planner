@@ -35,11 +35,9 @@ class Daily extends Component {
         this.completeBudget =this.completeBudget.bind(this)
     }
     editBudget() {
-        console.log("edit button working")
         this.setState({completed: false})
     }
     completeBudget() {
-        console.log('complete button working')
         const itemType = this.state.budget < 0 ? "exp" : "inc";
         const newItem = {
             id: Math.random(),
@@ -47,8 +45,11 @@ class Daily extends Component {
             value: this.state.budget,
             type: itemType
         }
-        this.props.submitData(newItem)
-        this.setState({completed: true})
+        //check to see that there is a budget beore adding to next page
+        if(newItem.value > 0){
+            this.props.submitData(newItem)
+            this.setState({completed: true})
+        }
     }
     //Once the component has been rendered to the page, it displays the period (day/month), while also retrieving the state from the App component and setting it as the new state
     componentDidMount() {
@@ -64,8 +65,9 @@ class Daily extends Component {
         //create a variable that contains a more understandable version of the date
         const today = `${day}, ${date}th ${month}`
 
-        //set the state be getting it from the App component
-        this.setState(this.props.pageState)
+        //set the state by getting it from the App component
+        this.setState(this.props.pageState, this.calculateTotal())
+        
         //set the date in the state
         this.setState({ period: today })
     }
