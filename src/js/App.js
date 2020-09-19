@@ -38,8 +38,12 @@ class App extends Component {
         const newIncArr = allItems.inc.filter(el => el.description !== newItem.description)
         const newExpArr = allItems.exp.filter(el => el.description !== newItem.description)
 
+        //create two new reduced values for the inc and exp totals, use this to calc new budget
+        const newIncTotal = newIncArr.reduce((acc, item) => acc += parseFloat(item.value), 0)
+        const newExpTotal = newExpArr.reduce((acc, item) => acc += parseFloat(item.value), 0)
+
         //check to see if the budget was an income or an expense
-        if (newItem.value < 0) {
+        if (newItem.type === "exp") {
             //set the state of the new page
             this.setState({pageState: {
                 ...pageState,
@@ -50,10 +54,10 @@ class App extends Component {
                         exp: [...newExpArr, newItem]
                     },
                     totals: {
-                        ...pageState[newPage].totals,
-                        exp: pageState[newPage].totals.exp + newItem.value
+                        inc: newIncTotal,
+                        exp: newExpTotal + Math.abs(newItem.value)
                     },
-                    budget: pageState[newPage]. budget - newItem.value
+                    budget: newIncTotal - newExpTotal - Math.abs(newItem.value)
                 }
             }})
         }else if(newItem.value === 0){
@@ -69,10 +73,10 @@ class App extends Component {
                         exp: newExpArr
                     },
                     totals: {
-                        ...pageState[newPage].totals,
-                        inc: pageState[newPage].totals.inc + newItem.value
+                        inc: newIncTotal + Math.abs(newItem.value),
+                        exp: newExpTotal
                     },
-                    budget: pageState[newPage].budget + newItem.value
+                    budget: newIncTotal - newExpTotal + Math.abs(newItem.value)
                 }
             }})
         }

@@ -9,8 +9,8 @@ const EditAndSubmit = props => {
             >Edit</button>
             <button 
                 className="submit btn" 
-                onClick={props.data.completed ? (event) => {event.preventDefault; alert("Already submitted")}:props.completeBudget}
-            >Submit</button>
+                onClick={props.data.completed ? (event) => {event.preventDefault; alert("Already saved")}:props.completeBudget}
+            >Save</button>
         </div>
     )
 }

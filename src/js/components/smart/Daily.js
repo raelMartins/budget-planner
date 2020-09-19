@@ -42,11 +42,13 @@ class Daily extends Component {
         const newItem = {
             id: Math.random(),
             description: this.state.period.toUpperCase(),
-            value: this.state.budget,
+            value: Math.abs(this.state.budget),
             type: itemType
         }
         //check to see that there is a budget beore adding to next page
-        if(newItem.value > 0){
+        if(newItem.value === 0){
+            return null
+        }else {
             this.props.submitData(newItem)
             this.setState({completed: true})
         }
