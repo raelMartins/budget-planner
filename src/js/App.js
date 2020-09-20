@@ -9,9 +9,9 @@ class App extends Component {
             currentPage: "daily",
             pages: ["daily", "monthly", "stats"],
             pageState: {
-                daily: {period: "",budget: 0,percentage: -1,currentItem: {type: "inc",description: "",value: ""},allItems: {inc: [],exp: []},totals: {inc: 0,exp: 0}},
-                monthly:{period: "",budget: 0,percentage: -1,currentItem: {type: "inc",description: "",value: ""},allItems: {inc: [],exp: []},totals: {inc: 0,exp: 0}},
-                stats: {period: "",budget: 0,allItems: {inc: [],exp: []},totals: {inc: 0,exp: 0}}
+                daily: {period: "",budget: 0,percentage: -1,currentItem: {type: "inc",description: "",value: ""},allItems: {inc: [],exp: [], all: []},totals: {inc: 0,exp: 0}},
+                monthly:{period: "",budget: 0,percentage: -1,currentItem: {type: "inc",description: "",value: ""},allItems: {inc: [],exp: [], all: []},totals: {inc: 0,exp: 0}},
+                stats: {period: "",budget: 0,allItems: {inc: [],exp: [], all: []},totals: {inc: 0,exp: 0}}
             }
         }
         //binding the lexical this to the component (at least till i understand how to make my arrow functions work)
@@ -24,20 +24,18 @@ class App extends Component {
         //destructuring to get the current page and the pages array
         const {currentPage, pageState, pages} = this.state;
 
-
         //create a variable that contains the new page where the new item data goes
         const pageIndex = pages.indexOf(currentPage);
         const newPage = pages[pageIndex + 1];
 
         //create a variable to represent the object containing the income and expenses objects
-        const allItems = pageState[newPage].allItems;
-        console.log(allItems)
-        
+        const allItems = pageState[newPage].allItems;        
 
         //create two new arrays based on the previous income and expenses array except these arrays are used to check if a submission has been input for that day already,
         //delete it, then give it a new value
         const newIncArr = allItems.inc.filter(el => el.description !== newItem.description)
         const newExpArr = allItems.exp.filter(el => el.description !== newItem.description)
+        const newAllArr = allItems.all.filter(el => el.description !== newItem.description)
 
         //create two new reduced values for the inc and exp totals, use this to calc new budget
         const newIncTotal = newIncArr.reduce((acc, item) => acc += parseFloat(item.value), 0)
@@ -52,7 +50,8 @@ class App extends Component {
                     ...pageState[newPage],
                     allItems: {
                         inc: newIncArr,
-                        exp: [...newExpArr, newItem]
+                        exp: [...newExpArr, newItem],
+                        all: [...newAllArr, newItem]
                     },
                     totals: {
                         inc: newIncTotal,
@@ -71,7 +70,8 @@ class App extends Component {
                     allItems: {
                         ...allItems,
                         inc: [...newIncArr, newItem],
-                        exp: newExpArr
+                        exp: newExpArr,
+                        all: [...newAllArr, newItem]
                     },
                     totals: {
                         inc: newIncTotal + Math.abs(newItem.value),

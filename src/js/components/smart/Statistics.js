@@ -12,7 +12,8 @@ class Statistics extends Component {
             budget: 0,
             allItems: {
                 inc: [],
-                exp: []
+                exp: [],
+                all: []
             },
             totals: {
                 inc: 0,
@@ -22,7 +23,6 @@ class Statistics extends Component {
     }
     componentDidMount() {
         const year = new Date().getFullYear()
-        console.log(this.state)
         this.setState(this.props.pageState)
         this.setState({period: year})
     }

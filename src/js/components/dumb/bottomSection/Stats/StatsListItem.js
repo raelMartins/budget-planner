@@ -5,8 +5,8 @@ import StatsListItemInfo from './StatsListItemInfo';
 const StatsListItem = props => {
     return(
         <div className="list-item">
-            <StatsListItemButton />
-            <StatsListItemInfo />
+            <StatsListItemButton item={props.item}/>
+            {/* <StatsListItemInfo /> */}
         </div>
     )
 }

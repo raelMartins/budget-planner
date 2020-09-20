@@ -5,7 +5,9 @@ import StatsMainContent from './StatsMainContent';
 const StatsBottom = props => {
     return(
         <div className="stats-bottom">
-            <StatsMainContent />
+            <StatsMainContent 
+                data={props.data}
+            />
             <PageButtons  
                 data={props.data} 
                 currentPage={props.currentPage} 
