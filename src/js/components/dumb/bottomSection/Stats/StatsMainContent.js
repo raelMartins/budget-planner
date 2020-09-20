@@ -2,7 +2,7 @@ import React from 'react';
 import StatsListItem from './StatsListItem';
 
 const StatsMainContent = props => {
-    const allItems = props.data.allItems.all.map(el => <StatsListItem item={el}/>)
+    const allItems = props.data.allItems.all.map(el => <StatsListItem key={el.id} item={el}/>)
     return(
         <div className="container stats-container">
             <div className="stats-title">

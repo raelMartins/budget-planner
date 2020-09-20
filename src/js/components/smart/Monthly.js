@@ -46,7 +46,8 @@ class Monthly extends Component {
             value: Math.abs(this.state.budget),
             type: itemType,
             incomes: this.state.totals.inc,
-            expenses: this.state.totals.exp
+            expenses: this.state.totals.exp,
+            details: this.state.allItems.all
         }
         //check to see that there is a budget beore adding to next page
         if(newItem.value === 0){
@@ -133,8 +134,9 @@ class Monthly extends Component {
         if (currentItem.description && currentItem.value) {
             //give it a random id(to be done with the uniqid dependency later)
             currentItem.id = Math.random();
-            currentItem.incomes = "";
-            currentItem.expenses = "";
+            currentItem.incomes = 0;
+            currentItem.expenses = 0;
+            currentItem.details = [];
             //check to see the type of the item then set them to state and calculate the totals immediately after in the callback
             currentItem.type === "inc" ? 
              this.setState({
