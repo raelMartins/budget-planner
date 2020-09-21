@@ -21,7 +21,6 @@
 }
 
 body {
-    color: #555;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 16px;
     position: relative;
@@ -38,7 +37,7 @@ body {
 ***************************/
 
 .top {
-    height: 40vh;
+    height: 45vh;
     background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url(images/39c3b32c6498d35d4062fe9d5971ceff.jpg);
     background-size: cover;
     background-position: center;
@@ -77,11 +76,11 @@ body {
 
 .budget__income {
     margin-bottom: 10px;
-    background-color: #28B9B5;
+    background-color: teal;
 }
 
 .budget__expenses {
-    background-color: #FF5049;
+    background-color: rgb(240, 47, 47);
 }
 
 .budget__income--text,
@@ -117,7 +116,11 @@ body {
 /**********************************************
 *** BOTTOM PART
 **********************************************/
-.bottom {position: relative;}
+.bottom {
+    position: relative;
+    background-color: rgba(201, 195, 195, 0.884);
+    padding-bottom: 30px;
+}
 
 /***** FORM *****/
 .add {
@@ -195,19 +198,29 @@ body {
 
 /***** LISTS *****/
 .container {
-    width: 100%;
-    margin: 60px auto;
+    position: relative;
+    width: 84%;
+    margin: 40px auto;
+    padding-top: 30px;
+    padding-bottom: 55px;
+    background-color: whitesmoke;
+    min-height: 270px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
 }
 
 .income {
     float: left;
     width: 475px;
-    margin-bottom: 100px;
+    /* padding-bottom: 100px; */
+    min-height: 140px;
 }
 
 .expenses {
     float: left;
     width: 475px;
+    min-height: 140px;
+    margin-bottom: 10px;
 }
 
 h2 {
@@ -217,8 +230,8 @@ h2 {
     margin-bottom: 15px;
 }
 
-.income__title { color: #28B9B5; }
-.expenses__title { color: #FF5049; }
+.income__title { color: teal; }
+.expenses__title { color: rgb(240, 47, 47); }
 
 .item {
     padding: 13px;
@@ -251,13 +264,13 @@ h2 {
 
 .income .item__value,
 .income .item__delete--btn {
-    color: #28B9B5;
+    color: teal;
 }
 
 .expenses .item__value,
 .expenses .item__percentage,
 .expenses .item__delete--btn {
-    color: #FF5049;
+    color:rgb(240, 47, 47);
 }
 
 
@@ -296,13 +309,15 @@ h2 {
 
 /********** BUTTONS **************/
 
+/*Next and previous buttons*/
+
 .page-btn {
     border: none;
     outline: none;
     padding: 12px;
     width: 50px;
     height: 50px;
-    background-color: #a2aaaa34;
+    background-color: rgba(245, 245, 245, 0.404);
     text-align: center;
     border-radius: 50%;
     position: relative;
@@ -310,7 +325,7 @@ h2 {
 }
 
 .page-btn:hover {
-    background-color: #a2aaaac0;
+    background-color: whitesmoke;
     transform: translateY(-5px);
 
 }
@@ -319,22 +334,16 @@ h2 {
     box-shadow: none;
 }
 
-.buttons {
-    position: absolute;
-    bottom: 0;
-    right: 45%;
-}
-
 .page-btn-next {
     position: absolute;
-    top: 250px;
+    top: 230px;
     right: 0px;
     padding: 10px;
 }
 
 .page-btn-previous {
     position: absolute;
-    top: 250px;
+    top: 230px;
     left: 0px;
     padding: 10px;
 
@@ -342,4 +351,178 @@ h2 {
 .budget-list {
     max-width: 95%;
     
+}
+/*Edit and submit buttons*/
+
+.edit_and_submit {
+    position: absolute;
+    bottom: 12px;
+    right: 20px;
+}
+
+.edit { color: rgb(240, 47, 47); border: none; }
+.submit { color: teal; border: none;}
+
+.edit:hover, .edit:active {
+    color: rgb(138, 28, 28);
+    box-shadow: none;
+    outline: none;
+    border: none;
+}
+.submit:hover, .submit:active {
+    color: rgb(3, 68, 68);
+    box-shadow: none;
+    outline: none;
+}
+
+.edit:focus, .submit:focus {
+    box-shadow: none;
+    outline: none;
+    border: none;
+}
+
+/******* STATS PAGE *****/
+
+/** Top **/
+.stats-top{
+    position: relative;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url(images/39c3b32c6498d35d4062fe9d5971ceff.jpg);
+    background-size: cover;
+    background-position: center;
+    max-width: 100vw;
+    height: 45vh;
+}
+.stats-year {
+    color: white;font-size: 24px;
+    padding: 20px;
+    text-align: center;
+}
+
+.stats-total-budget {
+    color: white;
+    font-size: 40px;
+    text-align: center;
+}
+
+.stats-total-incomes {
+    color: rgb(42, 184, 184);
+    position: absolute;
+    font-size: 20px;
+    top: 65%;
+    right: 50px;
+
+}
+.stats-total-expenses {
+    color: rgb(184, 42, 42);
+    position: absolute;
+    font-size: 20px;
+    top: 80%;
+    right: 50px;
+
+}
+
+/** Bottom **/
+.stats-bottom {
+    position: relative;
+    background-color: rgba(201, 195, 195, 0.884);
+    padding-top: 50px;
+    padding-bottom: 30px;
+    max-width: 100vw;
+}
+.stats-container {
+    margin-top: 0px;
+    border-radius: 0px;
+    padding-top: 15px;
+    min-height: 370px;
+}
+
+.stats-title {
+    font-size: 16px;
+    color: teal;
+    padding: 0 5px;
+    padding-bottom: 5px;
+    border-bottom: 3px solid teal;
+    margin-bottom: 10px;
+}
+
+.list-item {
+    position: relative;
+}
+.accordion {
+    position: relative;
+    margin: auto;
+    width: 100%;
+    text-align: left;
+    padding: 14px;
+    padding-left: 5px;
+    border-radius: 0;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.item-active {
+    background-color: rgb(233, 233, 233);
+}
+.accordion:focus {
+    box-shadow: none;
+}
+
+.accordion:hover, .accordion:active, .accordion:focus {
+    background-color: rgb(233, 233, 233);
+}
+.monthly-income, .monthly-expense, .monthly-total {
+    padding: 4px;
+    margin: 4;
+    font-size: 14px;
+}
+.monthly-total {
+    font-size: 16px;
+}
+.monthly-description {
+    position: relative;
+    top: 2px;
+}
+.monthly-income {color: teal}
+.monthly-expense {color: red}
+
+.monthly-budget-information {
+    padding: 10px;
+    position: relative;
+    margin: auto;
+    font-size: 13px;
+    border-bottom: 0.5px solid rgb(228, 225, 225);
+}
+
+.info-income, .info-expense , .info-value{
+    /* float: right; */
+    padding: 5px;
+}
+.info-income {color: teal; font-size: 11px;}
+.info-expense {color: red; font-size: 11px;}
+
+.item-info-container {
+    padding: 0px 10px;
+    max-height: 0px;
+    overflow: hidden;
+    background-color: rgb(233, 233, 233);
+    border-bottom: 0.5px solid rgb(182, 179, 179);
+    transition: max-height 1s ease-out;
+}
+
+.detail-active {
+    max-height: 2000px;
+}
+
+.clear-data {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: slategray;
+}
+.clear-data:hover, .clear-data:active, .clear-data:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.clear-data:hover, .clear-data:active {
+    color: steelblue;
 }
