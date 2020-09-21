@@ -20,11 +20,22 @@ class Statistics extends Component {
                 exp: 0
             }
         }
+        this.showDetails = this.showDetails.bind(this)
     }
     componentDidMount() {
         const year = new Date().getFullYear()
         this.setState(this.props.pageState)
         this.setState({period: year})
+    }
+    showDetails(id) {
+        const items = this.state.allItems.all.map(el => {
+            el.id === id ? el.isActive = !el.isActive : el.isActive;
+            return el
+        })
+        this.setState({allItems: {
+            ...this.state.allItems,
+            all: [...items]
+        }})
     }
     render() {
         return(
@@ -39,6 +50,7 @@ class Statistics extends Component {
                     data={this.state}  
                     currentPage={this.props.currentPage} 
                     changePage={this.props.changePage}
+                    showDetails={this.showDetails}
                 />
             </div>
         )

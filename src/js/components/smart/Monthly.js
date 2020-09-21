@@ -47,7 +47,8 @@ class Monthly extends Component {
             type: itemType,
             incomes: this.state.totals.inc,
             expenses: this.state.totals.exp,
-            details: this.state.allItems.all
+            details: this.state.allItems.all,
+            isActive: false
         }
         //check to see that there is a budget beore adding to next page
         if(newItem.value === 0){

@@ -7,6 +7,7 @@ const StatsBottom = props => {
         <div className="stats-bottom">
             <StatsMainContent 
                 data={props.data}
+                showDetails={props.showDetails}
             />
             <PageButtons  
                 data={props.data} 
