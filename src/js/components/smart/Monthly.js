@@ -18,7 +18,8 @@ class Monthly extends Component {
             },
             allItems: {
                 inc: [],
-                exp: []
+                exp: [],
+                all: []
             },
             totals: {
                 inc: 0,
@@ -43,7 +44,11 @@ class Monthly extends Component {
             id: Math.random(),
             description: this.state.period.toUpperCase(),
             value: Math.abs(this.state.budget),
-            type: itemType
+            type: itemType,
+            incomes: this.state.totals.inc,
+            expenses: this.state.totals.exp,
+            details: this.state.allItems.all,
+            isActive: false
         }
         //check to see that there is a budget beore adding to next page
         if(newItem.value === 0){
@@ -101,12 +106,14 @@ class Monthly extends Component {
         //create new arrays without the deleted item using its id and the filter method
         const incomes = this.state.allItems.inc.filter(el => el.id !== id)
         const expenses = this.state.allItems.exp.filter(el => el.id !== id)
+        const allBudget = this.state.allItems.all.filter(el => el.id !== id)
 
         //set the items to the allItems object and their respective arrays after which point i again calculate the total using the callback function provided with setState
         this.setState({
             allItems: {
                 inc: incomes,
-                exp: expenses
+                exp: expenses,
+                all: allBudget
             }
         },this.calculateTotal)
     }
@@ -122,17 +129,22 @@ class Monthly extends Component {
         //create a new array containing all the elements of the old array , then tag on the new current item on at the end
         const incomes = [...allItems.inc, currentItem]
         const expenses = [...allItems.exp, currentItem]
+        const allBudget = [...allItems.all, currentItem]
 
         //check to see that the inputs aren't empty
         if (currentItem.description && currentItem.value) {
             //give it a random id(to be done with the uniqid dependency later)
             currentItem.id = Math.random();
+            currentItem.incomes = 0;
+            currentItem.expenses = 0;
+            currentItem.details = [];
             //check to see the type of the item then set them to state and calculate the totals immediately after in the callback
             currentItem.type === "inc" ? 
              this.setState({
                 allItems: {
                     ...allItems,
-                    inc: incomes
+                    inc: incomes,
+                    all: allBudget
                 },
                 currentItem: {
                     type: currentItem.type,
@@ -144,7 +156,8 @@ class Monthly extends Component {
             this.setState({
                 allItems: {
                     ...allItems,
-                    exp: expenses
+                    exp: expenses,
+                    all: allBudget
                 },
                 currentItem: {
                     type: currentItem.type,
