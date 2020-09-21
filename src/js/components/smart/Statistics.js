@@ -21,6 +21,7 @@ class Statistics extends Component {
             }
         }
         this.showDetails = this.showDetails.bind(this)
+        this.clearAllData = this.clearAllData.bind(this)
     }
     componentDidMount() {
         const year = new Date().getFullYear()
@@ -37,6 +38,9 @@ class Statistics extends Component {
             all: [...items]
         }})
     }
+    clearAllData() {
+        this.setState({ period: "",budget: 0,allItems: {inc: [],exp: [],all: []},totals: {inc: 0,exp: 0}})
+    }
     render() {
         return(
             //render stats content to the DOM
@@ -51,6 +55,7 @@ class Statistics extends Component {
                     currentPage={this.props.currentPage} 
                     changePage={this.props.changePage}
                     showDetails={this.showDetails}
+                    clearAllData={this.clearAllData}
                 />
             </div>
         )

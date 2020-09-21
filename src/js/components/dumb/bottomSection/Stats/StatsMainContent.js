@@ -9,6 +9,11 @@ const StatsMainContent = props => {
                 MONTHLY BUDGETS
             </div>
             {allItems}
+            <button 
+                className="btn clear-data" 
+                style={allItems.length > 0 ? {display: "block"} : {display: "none"}} 
+                onClick={props.clearAllData}
+            >Clear</button>
         </div>
     )
 }

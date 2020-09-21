@@ -62,18 +62,27 @@ class Daily extends Component {
         //get day from the array of days
         const days = [ 'Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
         const day = days[new Date().getDay()]
-        //get month from the array of months
-        const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
-        const month = months[new Date().getMonth()]
+
         //get day in the month using the getDate method
         const date = new Date().getDate()
 
-        //create a variable that contains a more understandable version of the date
-        const today = `${day}, ${date}th ${month}`
+        //get the day of the month ad give it the appropriate suffix tag
+        const stringDate = date.toString()
+        let newDate;
 
+        if(stringDate.charAt(stringDate.length - 1) === "1" && stringDate.charAt(stringDate.length - 2) !== "1"){
+            newDate = `${stringDate}st`
+        }else if (stringDate.charAt(stringDate.length - 1) === "2" && stringDate.charAt(stringDate.length - 1) !== "1") {
+            newDate = `${stringDate}nd`
+        }else if (stringDate.charAt(stringDate.length - 1) === "3" && stringDate.charAt(stringDate.length - 1) !== "1") {
+            newDate = `${stringDate}rd`
+        }else {
+            newDate = `${stringDate}th`
+        }
+        //create a variable that contains a more understandable version of the date
+        const today = `${day} the ${newDate}`
         //set the state by getting it from the App component
         this.setState(this.props.pageState, this.calculateTotal())
-        
         //set the date in the state
         this.setState({ period: today })
     }

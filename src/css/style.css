@@ -505,3 +505,18 @@ h2 {
 .detail-active {
     max-height: 2000px;
 }
+
+.clear-data {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: slategray;
+}
+.clear-data:hover, .clear-data:active, .clear-data:focus {
+    box-shadow: none;
+    outline: none;
+}
+
+.clear-data:hover, .clear-data:active {
+    color: steelblue;
+}

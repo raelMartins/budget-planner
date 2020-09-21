@@ -8,6 +8,7 @@ const StatsBottom = props => {
             <StatsMainContent 
                 data={props.data}
                 showDetails={props.showDetails}
+                clearAllData={props.clearAllData}
             />
             <PageButtons  
                 data={props.data} 
