@@ -19,6 +19,22 @@ class App extends Component {
         this.getState = this.getState.bind(this)
         this.submitData = this.submitData.bind(this)
     }
+    componentDidMount() {
+        this.retrieveData()
+    }
+    persistData () {
+        localStorage.setItem("allData",JSON.stringify(this.state))
+    }
+    retrieveData () {
+        const budgetData = JSON.parse(localStorage.getItem("allData"))
+        if (budgetData) {
+            this.setState(budgetData)
+        }
+    }
+    componentDidUpdate () {
+        console.log("updated")
+        this.persistData()
+    }
     //this method ,on clicking the submit button, adds the total budget of the page i'm on, to the state of the next page
     submitData(newItem) {
         //destructuring to get the current page and the pages array
