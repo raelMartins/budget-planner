@@ -9,7 +9,10 @@
     "start": "webpack-dev-server --mode development --open",
     "deploy": "gh-pages -d dist"
   },
-  "homepage": "https://raelMartins.github.io/budget-planner",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/raelMartins/budget-planner.git"
+  },
   "author": "Devrael",
   "license": "ISC",
   "devDependencies": {
@@ -28,6 +31,10 @@
     "webpack-cli": "^3.3.12",
     "webpack-dev-server": "^3.11.0"
   },
+  "bugs": {
+    "url": "https://github.com/raelMartins/budget-planner/issues"
+  },
+  "homepage": "https://raelMartins.github.io/budget-planner",
   "dependencies": {
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
