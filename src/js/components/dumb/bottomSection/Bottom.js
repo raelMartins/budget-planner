@@ -3,6 +3,7 @@ import AddBudget from './AddBudget';
 import EditAndSubmit from './EditAndSubmit';
 import MainContent from './MainContent'
 import PageButtons from './PageButtons';
+import '../../../../scss/bottom.scss'
 
 //created a stateless componenet for the bottom section
 const Bottom = props =>{

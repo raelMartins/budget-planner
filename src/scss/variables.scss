@@ -1,2 +1,8 @@
 $incomeColor: teal;
 $expenseColor: rgb(240, 47, 47);
+
+@mixin large {
+  @media screen and (min-width: 600px) {
+    @content;
+  }
+}

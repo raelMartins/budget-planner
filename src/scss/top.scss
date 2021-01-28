@@ -1,0 +1,66 @@
+@import './variables.scss';
+
+.top {
+  min-height: 45vh;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35)), url('../img/got.jpg');
+  background-size: cover;
+  background-position: center;
+  .budget {
+      color: #fff;
+      padding: 15px;
+      .budget__title {
+          font-size: 1.2rem;
+          text-align: center;
+          margin-bottom: 10px;
+          font-weight: 300;
+      }
+      .budget__value {
+          font-weight: 300;
+          font-size: 3rem;
+          text-align: center;
+          margin: 25px auto;
+          letter-spacing: 2px;
+      } 
+      .budget__income,
+      .budget__expenses {
+          padding: 12px;
+          text-transform: uppercase;
+          display: flex;
+          width: 350px;
+          max-width: 85%;
+          margin: auto;
+          justify-content: space-between;
+      }
+      .budget__income {
+          margin-bottom: 10px;
+          background-color: $incomeColor;
+      }
+      .budget__expenses {
+          background-color: $expenseColor;
+      }
+      .text {
+          font-size: 13px;
+          color: whitesmoke;
+          margin-top: 2px;
+      }
+      .extra {
+          display: flex;
+      }
+      .value {
+          flex: 1;
+          letter-spacing: 1px;
+      }
+      .percentage {
+          flex: 1;
+          width: 34px;
+          font-size: 11px;
+          padding: 3px 0;
+          margin-left: 10px;
+      }
+      .budget__expenses .percentage {
+          background-color: rgba(255, 255, 255, 0.2);
+          text-align: center;
+          border-radius: 3px;
+      }
+  }
+}
