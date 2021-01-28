@@ -2,137 +2,173 @@ import React, { Component } from 'react';
 import ShowPage from './components/dumb/ShowPage';
 //create the app class component
 class App extends Component {
-    constructor() {
-        super()
-        //initialize state
-        this.state = {
-            currentPage: "monthly",
-            pages: ["daily", "monthly", "stats"],
-            pageState: {
-                daily: {period: "",budget: 0,percentage: -1,currentItem: {type: "inc",description: "",value: ""},allItems: {inc: [],exp: [], all: []},totals: {inc: 0,exp: 0}},
-                monthly:{period: "",budget: 0,percentage: -1,currentItem: {type: "inc",description: "",value: ""},allItems: {inc: [],exp: [], all: []},totals: {inc: 0,exp: 0}},
-                stats: {period: "",budget: 0,allItems: {inc: [],exp: [], all: []},totals: {inc: 0,exp: 0}}
-            }
+  constructor() {
+    super();
+    //initialize state
+    this.state = {
+      currentPage: 'monthly',
+      pages: ['daily', 'monthly', 'stats'],
+      pageState: {
+        daily: {
+          period: '',
+          budget: 0,
+          percentage: -1,
+          currentItem: { type: 'inc', description: '', value: '' },
+          allItems: { inc: [], exp: [], all: [] },
+          totals: { inc: 0, exp: 0 }
+        },
+        monthly: {
+          period: '',
+          budget: 0,
+          percentage: -1,
+          currentItem: { type: 'inc', description: '', value: '' },
+          allItems: { inc: [], exp: [], all: [] },
+          totals: { inc: 0, exp: 0 }
+        },
+        stats: {
+          period: '',
+          budget: 0,
+          allItems: { inc: [], exp: [], all: [] },
+          totals: { inc: 0, exp: 0 }
         }
-        //binding the lexical this to the component (at least till i understand how to make my arrow functions work)
-        this.changePage = this.changePage.bind(this)
-        this.getState = this.getState.bind(this)
-        this.submitData = this.submitData.bind(this)
+      }
+    };
+    //binding the lexical this to the component (at least till i understand how to make my arrow functions work)
+    this.changePage = this.changePage.bind(this);
+    this.getState = this.getState.bind(this);
+    this.submitData = this.submitData.bind(this);
+  }
+  componentDidMount() {
+    this.retrieveData();
+  }
+  persistData() {
+    localStorage.setItem('allData', JSON.stringify(this.state));
+  }
+  retrieveData() {
+    const budgetData = JSON.parse(localStorage.getItem('allData'));
+    if (budgetData) {
+      this.setState(budgetData);
     }
-    componentDidMount() {
-        this.retrieveData()
-    }
-    persistData () {
-        localStorage.setItem("allData",JSON.stringify(this.state))
-    }
-    retrieveData () {
-        const budgetData = JSON.parse(localStorage.getItem("allData"))
-        if (budgetData) {
-            this.setState(budgetData)
+  }
+  componentDidUpdate() {
+    console.log('updated');
+    this.persistData();
+  }
+  //this method ,on clicking the submit button, adds the total budget of the page i'm on, to the state of the next page
+  submitData(newItem) {
+    //destructuring to get the current page and the pages array
+    const { currentPage, pageState, pages } = this.state;
+
+    //create a variable that contains the new page where the new item data goes
+    const pageIndex = pages.indexOf(currentPage);
+    const newPage = pages[pageIndex + 1];
+
+    //create a variable to represent the object containing the income and expenses objects
+    const allItems = pageState[newPage].allItems;
+
+    //create two new arrays based on the previous income and expenses array except these arrays are used to check if a submission has been input for that day already,
+    //delete it, then give it a new value
+    const newIncArr = allItems.inc.filter(
+      (el) => el.description !== newItem.description
+    );
+    const newExpArr = allItems.exp.filter(
+      (el) => el.description !== newItem.description
+    );
+    const newAllArr = allItems.all.filter(
+      (el) => el.description !== newItem.description
+    );
+
+    //create two new reduced values for the inc and exp totals, use this to calc new budget
+    const newIncTotal = newIncArr.reduce(
+      (acc, item) => (acc += parseFloat(item.value)),
+      0
+    );
+    const newExpTotal = newExpArr.reduce(
+      (acc, item) => (acc += parseFloat(item.value)),
+      0
+    );
+
+    //check to see if the budget was an income or an expense
+    if (newItem.type === 'exp') {
+      //set the state of the new page
+      this.setState({
+        pageState: {
+          ...pageState,
+          [newPage]: {
+            ...pageState[newPage],
+            allItems: {
+              inc: newIncArr,
+              exp: [...newExpArr, newItem],
+              all: [...newAllArr, newItem]
+            },
+            totals: {
+              inc: newIncTotal,
+              exp: newExpTotal + Math.abs(newItem.value)
+            },
+            budget: newIncTotal - newExpTotal - Math.abs(newItem.value)
+          }
         }
-    }
-    componentDidUpdate () {
-        console.log("updated")
-        this.persistData()
-    }
-    //this method ,on clicking the submit button, adds the total budget of the page i'm on, to the state of the next page
-    submitData(newItem) {
-        //destructuring to get the current page and the pages array
-        const {currentPage, pageState, pages} = this.state;
-
-        //create a variable that contains the new page where the new item data goes
-        const pageIndex = pages.indexOf(currentPage);
-        const newPage = pages[pageIndex + 1];
-
-        //create a variable to represent the object containing the income and expenses objects
-        const allItems = pageState[newPage].allItems;        
-
-        //create two new arrays based on the previous income and expenses array except these arrays are used to check if a submission has been input for that day already,
-        //delete it, then give it a new value
-        const newIncArr = allItems.inc.filter(el => el.description !== newItem.description)
-        const newExpArr = allItems.exp.filter(el => el.description !== newItem.description)
-        const newAllArr = allItems.all.filter(el => el.description !== newItem.description)
-
-        //create two new reduced values for the inc and exp totals, use this to calc new budget
-        const newIncTotal = newIncArr.reduce((acc, item) => acc += parseFloat(item.value), 0)
-        const newExpTotal = newExpArr.reduce((acc, item) => acc += parseFloat(item.value), 0)
-
-        //check to see if the budget was an income or an expense
-        if (newItem.type === "exp") {
-            //set the state of the new page
-            this.setState({pageState: {
-                ...pageState,
-                [newPage]: {
-                    ...pageState[newPage],
-                    allItems: {
-                        inc: newIncArr,
-                        exp: [...newExpArr, newItem],
-                        all: [...newAllArr, newItem]
-                    },
-                    totals: {
-                        inc: newIncTotal,
-                        exp: newExpTotal + Math.abs(newItem.value)
-                    },
-                    budget: newIncTotal - newExpTotal - Math.abs(newItem.value)
-                }
-            }})
-        }else if(newItem.value === 0){
-            alert("There is no value to be added")
-        }else {
-            this.setState({pageState: {
-                ...pageState,
-                [newPage]: {
-                    ...pageState[newPage],
-                    allItems: {
-                        ...allItems,
-                        inc: [...newIncArr, newItem],
-                        exp: newExpArr,
-                        all: [...newAllArr, newItem]
-                    },
-                    totals: {
-                        inc: newIncTotal + Math.abs(newItem.value),
-                        exp: newExpTotal
-                    },
-                    budget: newIncTotal - newExpTotal + Math.abs(newItem.value)
-                }
-            }})
+      });
+    } else if (newItem.value === 0) {
+      alert('There is no value to be added');
+    } else {
+      this.setState({
+        pageState: {
+          ...pageState,
+          [newPage]: {
+            ...pageState[newPage],
+            allItems: {
+              ...allItems,
+              inc: [...newIncArr, newItem],
+              exp: newExpArr,
+              all: [...newAllArr, newItem]
+            },
+            totals: {
+              inc: newIncTotal + Math.abs(newItem.value),
+              exp: newExpTotal
+            },
+            budget: newIncTotal - newExpTotal + Math.abs(newItem.value)
+          }
         }
-        
+      });
     }
-    //get the state from the page currently being used and store it into the state of the App component
-    getState(obj) {
-        this.setState({pageState: {
-            ...this.state.pageState,
-            [this.state.currentPage]: obj
-        }})
-    }
-    //Change the page i'm on
-    changePage(event, state) {
+  }
+  //get the state from the page currently being used and store it into the state of the App component
+  getState(obj) {
+    this.setState({
+      pageState: {
+        ...this.state.pageState,
+        [this.state.currentPage]: obj
+      }
+    });
+  }
+  //Change the page i'm on
+  changePage(event, state) {
+    //calling the getstate function
+    this.getState(state);
 
-        //calling the getstate function
-        this.getState(state)
+    //destructuring to get current page and pages array from state
+    const { currentPage, pages } = this.state;
 
-        //destructuring to get current page and pages array from state
-        const {currentPage, pages} = this.state
-
-        //get the new page and set it to current page in the state
-        const pageIndex = pages.indexOf(currentPage);
-        const newPage = event.target.id === "next" ? pages[pageIndex + 1] : pages[pageIndex - 1];
-        this.setState({currentPage: newPage})
-    }
-    render() {
-        return(
-            //render the pages to DOM
-            <div>
-                <ShowPage 
-                    currentPage={this.state.currentPage} 
-                    changePage={this.changePage}
-                    pageState={this.state.pageState} 
-                    submitData={this.submitData}
-                />
-            </div>
-        )   
-    }
+    //get the new page and set it to current page in the state
+    const pageIndex = pages.indexOf(currentPage);
+    const newPage =
+      event.target.id === 'next' ? pages[pageIndex + 1] : pages[pageIndex - 1];
+    this.setState({ currentPage: newPage });
+  }
+  render() {
+    return (
+      //render the pages to DOM
+      <div>
+        <ShowPage
+          currentPage={this.state.currentPage}
+          changePage={this.changePage}
+          pageState={this.state.pageState}
+          submitData={this.submitData}
+        />
+      </div>
+    );
+  }
 }
 
 export default App;
